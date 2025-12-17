@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>我的知识库门户</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <a href="/">首页</a>
+    <a href="/notes/">所有笔记</a>
+</nav>
+    </header>
+    
+    <main class="container">
+        <h1>我的Obsidian笔记库</h1>
+<p>欢迎来到我的知识库！这里包含了我所有的学习笔记。</p>
+<section class="portal">
+    <div class="portal-controls">
+        <input id="search-input" placeholder="搜索笔记（支持关键词）" aria-label="搜索笔记" />
+        <div class="filters">
+            <label>按标签:</label>
+            <select id="tag-filter">
+                <option value="">全部</option>
+            </select>
+        </div>
+        <button id="theme-toggle" aria-label="切换主题" aria-pressed="false" title="点击切换主题，右键显示更多选项">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </div>
+<p><div class="notes-list">
+<h2>按日期最近排序</h2>
+<ul></p>
+<p></ul>
+</div></p>
+<p><div id="search-results" class="search-results" aria-live="polite"></div></p>
+</section>
+<p><script src="/js/theme.js"></script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script src="/js/search.js"></script></p>
+
+    </main>
+    
+    <footer>
+        <p>Generated from Obsidian notes</p>
+    </footer>
+    
+    <script src="/js/theme.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

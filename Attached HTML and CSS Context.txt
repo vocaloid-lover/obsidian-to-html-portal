@@ -1,0 +1,20 @@
+Attached HTML and CSS Context
+
+<html><head><title>Not Found</title></head>
+<body>
+<h2>Access Error: 404 -- Not Found</h2>
+<pre>Cannot locate document: /</pre>
+
+
+</body></html>
+
+
+/* Matched Rule from user-agent */
+html {
+  display: block;
+}
+
+/* Matched Rule from user-agent */
+:root {
+  view-transition-name: root;
+}

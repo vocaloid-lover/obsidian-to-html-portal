@@ -1,0 +1,26 @@
+<p>Finding Laurent expansion for $ζ(s)$$ζ(s)$ is equivalent to finding a power series representation for</p>
+<p>$F(s)=ζ(s)−1s−1F(s)=ζ(s)−1s−1$</p>
+<p>at s=1s=1. This means that we need to develop strategies allowing us to deduce a formula for F(k)(s)F(k)(s). This can be done by plugging the Dirichlet series representation of ζ(s)ζ(s) into Euler-Maclaurin formula:</p>
+<p>ζ(s)=∑n=1∞1ns=1s−1+12−s∫∞1B¯¯¯¯1(x)xs+1dxζ(s)=∑n=1∞1ns=1s−1+12−s∫1∞B¯1(x)xs+1dx</p>
+<p>Consequently we have for all k&gt;1k&gt;1 that</p>
+<p>F(k)(1)=dkdsk[−s∫∞1B¯¯¯¯1(x)xs+1dx]s=1F(k)(1)=dkdsk[−s∫1∞B¯1(x)xs+1dx]s=1</p>
+<p>After simplifications, we can observe that</p>
+<p>∂k∂sk[−sx−s−1]=(−s)(−logx)kx−s−1−k(−logx)k−1x−s−1=(−1)kx−s−1[(−s)logkx+klogk−1x]∂k∂sk[−sx−s−1]=(−s)(−log⁡x)kx−s−1−k(−log⁡x)k−1x−s−1=(−1)kx−s−1[(−s)logk⁡x+klogk−1⁡x]</p>
+<p>As a result, we have</p>
+<p>F(k)(1)=(−1)k∫∞1B¯¯¯¯1(x)[klogk−1x−logkx]x2dx=(−1)k∫∞1B¯¯¯¯1(x)d(logkxx)F(k)(1)=(−1)k∫1∞B¯1(x)[klogk−1⁡x−logk⁡x]x2dx=(−1)k∫1∞B¯1(x)d(logk⁡xx)</p>
+<blockquote>
+<p>One can verify that this quantity converges</p>
+</blockquote>
+<p>To eliminate B¯¯¯¯1(x)B¯1(x) in the above integral, we apply Euler-Maclaurin formula to logkx/xlogk⁡x/x (for k&gt;1k&gt;1):</p>
+<p>∑n=1Nlogknn=logk+1Nk+1+logkN2N+∫N1B¯¯¯¯1(x)d(logkxx)=logk+1Nk+1+γk+o(1)∑n=1Nlogk⁡nn=logk+1⁡Nk+1+logk⁡N2N+∫1NB¯1(x)d(logk⁡xx)=logk+1⁡Nk+1+γk+o(1)</p>
+<p>where γkγk is the Stieltjes constants:</p>
+<p>γk=∫∞1B¯¯¯¯1(x)d(logkxx)γk=∫1∞B¯1(x)d(logk⁡xx)</p>
+<p>As a result, we can plug Stieltjes constants back into F(s)F(s) to get</p>
+<p>F(s)=F(1)+∑k=1∞(−1)kγkk!(s−1)kF(s)=F(1)+∑k=1∞(−1)kγkk!(s−1)k</p>
+<p>Now it remains to determine F(1)F(1), and using Euler-Maclaurin again on harmonic series allows us to determine F(1)=γF(1)=γ. Consequently, the Laurent expansion of ζ(s)ζ(s) at s=1s=1 is as follows</p>
+<p>ζ(s)=1s−1+∑k=0∞(−1)kγkk!(s−1)kζ(s)=1s−1+∑k=0∞(−1)kγkk!(s−1)k</p>
+<p>where</p>
+<p>γk=limN→∞{∑n=1Nlogknn−logk+1Nk+1}γk=limN→∞{∑n=1Nlogk⁡nn−logk+1⁡Nk+1}</p>
+<blockquote>
+<p>γ0=γγ0=γ makes the above expression valid for k≥0k≥0.</p>
+</blockquote>

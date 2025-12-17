@@ -1,0 +1,202 @@
+// ============================================
+// 卡片和容器组件
+// ============================================
+
+// 卡片
+.card {
+  @include card-base;
+
+  // 卡片变体
+  &--elevated {
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  &--flat {
+    box-shadow: none;
+    background-color: var(--color-bg-secondary);
+  }
+
+  &--outlined {
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  // 卡片头
+  &__header {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    margin: calc(var(--spacing-md) * -1) calc(var(--spacing-md) * -1) var(--spacing-md) calc(var(--spacing-md) * -1);
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  // 卡片体
+  &__body {
+    padding: var(--spacing-md);
+  }
+
+  // 卡片底
+  &__footer {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    margin: var(--spacing-md) calc(var(--spacing-md) * -1) calc(var(--spacing-md) * -1) calc(var(--spacing-md) * -1);
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+  }
+
+  // 响应式
+  @include mobile-only {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}
+
+// 网格容器
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+
+  &--auto-fit {
+    @include grid-auto-fit;
+  }
+
+  &--2col {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &--3col {
+    @include tablet-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// 容器
+.container {
+  @include container;
+
+  &--wide {
+    max-width: var(--max-width-wide);
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+// 堆栈布局
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  &--row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &--between {
+    @extend .stack--row;
+    justify-content: space-between;
+  }
+
+  &--center {
+    @include flex-center;
+  }
+
+  // 间距变体
+  &--lg {
+    gap: var(--spacing-lg);
+  }
+
+  &--sm {
+    gap: var(--spacing-sm);
+  }
+
+  &--xs {
+    gap: var(--spacing-xs);
+  }
+}
+
+// 分隔线
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-md) 0;
+
+  &--vertical {
+    width: 1px;
+    height: auto;
+    margin: 0 var(--spacing-md);
+  }
+
+  &--lg {
+    margin: var(--spacing-lg) 0;
+  }
+
+  &--sm {
+    margin: var(--spacing-sm) 0;
+  }
+}
+
+// 徽章
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  &--success {
+    background-color: var(--color-success);
+    color: white;
+  }
+
+  &--error {
+    background-color: var(--color-error);
+    color: white;
+  }
+
+  &--warning {
+    background-color: var(--color-warning);
+    color: #333;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+  }
+}
+
+// 标签
+.tag {
+  @extend .badge;
+  gap: 0;
+  padding: var(--spacing-xs) var(--spacing-sm);
+
+  &__remove {
+    margin-left: var(--spacing-xs);
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

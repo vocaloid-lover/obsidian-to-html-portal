@@ -1,0 +1,37 @@
+{
+  "name": "obsidian-to-html-project",
+  "version": "1.0.0",
+  "description": "将Obsidian笔记转换为静态HTML网站",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preprocess:frontmatter": "node scripts/add-frontmatter.js",
+    "preprocess:links": "node scripts/convert-links.js",
+    "preprocess:math": "node scripts/validate-mathjax.js",
+    "preprocess:search": "node scripts/generate-search-index.js",
+    "validate": "node scripts/validate-and-report.js",
+    "preprocess": "npm run preprocess:frontmatter && npm run preprocess:links && npm run preprocess:math && npm run preprocess:search",
+    "styles": "sass src/scss/styles.scss public/css/style.css",
+    "styles:watch": "sass --watch src/scss:public/css --no-source-map",
+    "styles:prod": "sass src/scss/styles.scss public/css/style.css --no-source-map && postcss public/css/style.css -r",
+    "build": "npm run styles:prod && npm run preprocess && eleventy",
+    "serve": "npm run styles && npm run preprocess && eleventy --serve",
+    "dev": "npm run styles:watch & npm run preprocess && eleventy --serve --watch"
+  },
+  "keywords": [
+    "obsidian",
+    "11ty",
+    "static-site",
+    "markdown"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "autoprefixer": "^10.4.23",
+    "cssnano": "^7.1.2",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.96.0"
+  }
+}

@@ -1,0 +1,244 @@
+// ============================================
+// 门户和搜索组件
+// ============================================
+
+// 门户容器
+.portal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+
+  @include tablet-up {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+  }
+}
+
+// 门户控制栏
+.portal-controls {
+  @include flex-column;
+  gap: var(--spacing-md);
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filters {
+    @include flex-center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+
+    label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    select {
+      min-width: 150px;
+    }
+  }
+}
+
+// 搜索输入框
+#search-input {
+  flex: 1 1 300px;
+  min-width: 250px;
+  @include input-base;
+}
+
+// 笔记列表
+.notes-list {
+  .notes-list__header {
+    margin-bottom: var(--spacing-md);
+
+    h2 {
+      margin: 0;
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// 笔记项
+.note-item {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: all var(--transition-base);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    strong {
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  .meta {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+
+    // 标签
+    .tag {
+      display: inline-block;
+      background-color: var(--color-bg-tertiary);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-xs);
+      margin: 0 var(--spacing-xs) 0 0;
+      font-size: 0.85em;
+    }
+  }
+
+  .excerpt {
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    @include line-clamp(2);
+  }
+}
+
+// 搜索结果
+.search-results {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// 搜索项
+.search-item {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+
+  &:hover {
+    background-color: var(--color-bg);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .search-meta {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+  }
+
+  .search-snippet {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-sm);
+    line-height: var(--line-height-normal);
+
+    // 高亮匹配的关键词
+    mark {
+      background-color: rgba(255, 193, 7, 0.5);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// 空结果提示
+.search-empty {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-text-secondary);
+
+  p {
+    margin: 0;
+  }
+}
+
+// 加载状态
+.search-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+
+  &::after {
+    content: "搜索中...";
+    color: var(--color-text-secondary);
+  }
+}
+
+// 响应式调整
+@include mobile-only {
+  .portal-controls {
+    flex-direction: column;
+    align-items: stretch;
+
+    .filters {
+      flex-direction: column;
+      align-items: stretch;
+
+      select {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+
+    #search-input {
+      width: 100%;
+      min-width: auto;
+    }
+  }
+
+  .note-item {
+    padding: var(--spacing-md) 0;
+  }
+}

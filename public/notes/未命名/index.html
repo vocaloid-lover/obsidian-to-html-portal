@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>未命名</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <a href="/">首页</a>
+    <a href="/notes/">所有笔记</a>
+</nav>
+    </header>
+    
+    <main class="container">
+        <article class="note">
+    <header class="note-header">
+        <h1>未命名</h1>
+        
+        <time datetime="2025-09-27">2025-09-27</time>
+        
+        
+        <div class="tags">
+            
+        </div>
+        
+    </header>
+    
+    <div class="note-content">
+        <p>&quot;</p>
+<h3>推广的可行性分析：从三元到多元的 Vieta 构造</h3>
+<h4><strong>推广思路</strong></h4>
+<p>考虑$n$个非零整数$a_1, a_2, \dots, a_n$，定义比值：</p>
+<p>$
+\alpha_k = \frac{a_k}{a_{k+1&#125;&#125; \quad (1 \leq k \leq n-1), \quad \alpha_n = \frac{a_n}{a_1}
+$</p>
+<p>满足$\prod_{k=1}^n \alpha_k = 1$。假设所有初等对称多项式$e_1, e_2, \dots, e_n$均为整数，其中：
+-$e_1 = \sum \alpha_i$
+-$e_2 = \sum_{i&lt;j} \alpha_i \alpha_j$
+-$\vdots$
+-$e_n = \prod \alpha_i = 1$</p>
+<p>构造多项式：</p>
+<p>$
+P(x) = \prod_{k=1}^n (x - \alpha_k) = x^n - e_1 x^{n-1} + e_2 x^{n-2} - \cdots + (-1)^n e_n \in \mathbb{Z}[x].
+$</p>
+<p>根$\alpha_k$是代数整数。若$\alpha_k \in \mathbb{Q}$，则$\alpha_k \in \mathbb{Z}$（因$\mathbb{Z}$在$\mathbb{Q}$中整闭）。由$\prod \alpha_k = 1$得$|\alpha_k| = 1$，故$|a_i| = |a_j|$对所有$i,j$成立。</p>
+<hr>
+<h4><strong>障碍：条件不足与自由度增加</strong></h4>
+<p>当$n &gt; 3$时，问题在于 <strong>给定的对称条件可能无法推出所有初等对称多项式为整数</strong>。以$n=4$为例：</p>
+<ul>
+<li>定义$\alpha = \frac{a}{b},\ \beta = \frac{b}{c},\ \gamma = \frac{c}{d},\ \delta = \frac{d}{a}$，满足$\alpha\beta\gamma\delta = 1$。</li>
+<li>初等对称多项式需$e_1, e_2, e_3 \in \mathbb{Z}$（因$e_4=1$）。</li>
+</ul>
+<p>但若仅给定部分条件（如相邻比值和与间隔比值和）：</p>
+<p>$
+s_1 = \alpha + \beta + \gamma + \delta \in \mathbb{Z}, \quad s_2 = \alpha\beta + \beta\gamma + \gamma\delta + \delta\alpha \in \mathbb{Z},
+$</p>
+<p><strong>这不足以确定$e_2$和$e_3$为整数</strong>。反例如下：</p>
+<h5><strong>反例 1：非整数绝对值</strong></h5>
+<p>取$a=1,\ b=2,\ c=1,\ d=2$：</p>
+<p>$
+\alpha = \tfrac{1}{2},\ \beta = 2,\ \gamma = \tfrac{1}{2},\ \delta = 2 \implies \alpha\beta\gamma\delta = 1.
+$</p>
+<ul>
+<li>相邻比值和：$\alpha + \beta + \gamma + \delta = \tfrac{1}{2} + 2 + \tfrac{1}{2} + 2 = 5 \in \mathbb{Z}$。</li>
+<li>间隔比值和：$\frac{a}{c} + \frac{b}{d} + \frac{c}{a} + \frac{d}{b} = 1 + 1 + 1 + 1 = 4 \in \mathbb{Z}$。
+但初等对称多项式：</li>
+</ul>
+<p>$
+e_2 = \sum_{i&lt;j} \alpha_i \alpha_j = \alpha\beta + \alpha\gamma + \alpha\delta + \beta\gamma + \beta\delta + \gamma\delta = 1 + \tfrac{1}{4} + 1 + 1 + 4 + 1 = \tfrac{25}{4} \notin \mathbb{Z}.
+$</p>
+<p>且$|a|, |b|, |c|, |d|$不全相等（$1, 2, 1, 2$）。</p>
+<h5><strong>反例 2：整数条件但绝对值不等</strong></h5>
+<p>取$a=2,\ b=1,\ c=3,\ d=6$：</p>
+<p>$
+\alpha = 2,\ \beta = \tfrac{1}{3},\ \gamma = \tfrac{1}{2},\ \delta = 3 \implies \alpha\beta\gamma\delta = 1.
+$</p>
+<ul>
+<li>相邻比值和：$2 + \tfrac{1}{3} + \tfrac{1}{2} + 3 = \tfrac{35}{6} \notin \mathbb{Z}$（不满足条件）。<br>
+调整$d=3$：</li>
+</ul>
+<p>$
+\alpha=2,\ \beta=\tfrac{1}{3},\ \gamma=1,\ \delta=\tfrac{3}{2} \implies \alpha\beta\gamma\delta=1.
+$</p>
+<ul>
+<li>相邻比值和：$2 + \tfrac{1}{3} + 1 + \tfrac{3}{2} = \tfrac{29}{6} \notin \mathbb{Z}$。<br>
+最终取$a=4,\ b=2,\ c=3,\ d=6$：</li>
+</ul>
+<p>$
+\alpha=2,\ \beta=\tfrac{2}{3},\ \gamma=\tfrac{1}{2},\ \delta=\tfrac{3}{4} \implies \alpha\beta\gamma\delta=1.
+$</p>
+<ul>
+<li>相邻比值和：$2 + \tfrac{2}{3} + \tfrac{1}{2} + \tfrac{3}{4} = \tfrac{55}{12} \notin \mathbb{Z}$。<br>
+需保证整数条件，取$a=6,\ b=3,\ c=2,\ d=4$：</li>
+</ul>
+<p>$
+\alpha=2,\ \beta=\tfrac{3}{2},\ \gamma=\tfrac{1}{2},\ \delta=\tfrac{2}{3} \implies \alpha\beta\gamma\delta=1.
+$</p>
+<ul>
+<li>相邻比值和：$2 + \tfrac{3}{2} + \tfrac{1}{2} + \tfrac{2}{3} = \tfrac{19}{3} \notin \mathbb{Z}$。<br>
+<strong>结论</strong>：在整数约束下，$n=4$时存在满足部分对称条件但绝对值不全相等的解（如反例 1）。</li>
+</ul>
+<hr>
+<h3><strong>推广的充要条件</strong></h3>
+<p>设$n$个整数$a_1, \dots, a_n$的比值$\alpha_k = \frac{a_k}{a_{k+1&#125;&#125;$（$a_{n+1} = a_1$），满足$\prod \alpha_k = 1$。则：</p>
+<p>$
+|a_1| = |a_2| = \cdots = |a_n| \quad \iff \quad \text{所有初等对称多项式 } e_1, e_2, \dots, e_{n-1} \in \mathbb{Z}.
+$</p>
+<h4><strong>解释</strong></h4>
+<ul>
+<li><strong>充分性</strong>：若所有$e_k \in \mathbb{Z}$，则 (P(x) \in \mathbb{Z}[x])，根$\alpha_k$为代数整数。由$\alpha_k \in \mathbb{Q}$得$\alpha_k \in \mathbb{Z}$，结合$\prod \alpha_k = 1$即证。</li>
+<li><strong>必要性</strong>：若$|a_i| = |a_j|$，则$|\alpha_k| = 1$。因$\alpha_k \in \mathbb{Q}$且$|\alpha_k| = 1$，有$\alpha_k = \pm 1$。此时所有$e_k$为整数（对称多项式在${\pm 1}$上的取值）。</li>
+</ul>
+<hr>
+<h3><strong>深层原因：不变量的最小生成元</strong></h3>
+<ol>
+<li>
+<p><strong>代数独立性</strong>：<br>
+$n$元初等对称多项式$e_1, \dots, e_n$代数独立，需至少$n$个条件确定所有$e_k$。但当$\prod \alpha_k = 1$时，$e_n = 1$已知，仍需$n-1$个独立条件。</p>
+</li>
+<li>
+<p><strong>$n=3$的特殊性</strong>：</p>
+<ul>
+<li>条件数：给定$s_1 = e_1 \in \mathbb{Z}$和$s_2 = e_2 \in \mathbb{Z}$，恰好确定所有初等对称多项式。</li>
+<li>对称性：$s_1, s_2$生成对称多项式环的所有不变量。</li>
+</ul>
+</li>
+<li>
+<p><strong>$n \geq 4$的复杂性</strong>：</p>
+<ul>
+<li>部分对称和（如相邻比和、间隔比和）<strong>不足以生成全体初等对称多项式</strong>。</li>
+<li>存在更多自由度，导致反例（如前述$n=4$时$e_2 \notin \mathbb{Z}$）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3><strong>总结</strong></h3>
+<table>
+<thead>
+<tr>
+<th>维度$n$</th>
+<th>给定条件</th>
+<th>是否可推广</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$n = 3$</td>
+<td>$e_1, e_2 \in \mathbb{Z}$</td>
+<td>是</td>
+<td>恰好确定所有初等对称式</td>
+</tr>
+<tr>
+<td>$n \geq 4$</td>
+<td>部分对称和$\in \mathbb{Z}$</td>
+<td>否</td>
+<td>条件不足，自由度未被消除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心结论</strong>：Vieta 构造的推广要求 <strong>所有初等对称多项式为整数</strong>。当$n &gt; 3$时，若仅给出部分对称条件（如轮换和），则无法保证绝对值相等。</p>
+
+    </div>
+    
+    <footer class="note-footer">
+        <nav class="note-nav">
+            <a href="/">返回首页</a>
+            <a href="/notes/">所有笔记</a>
+        </nav>
+    </footer>
+</article>
+    </main>
+    
+    <footer>
+        <p>Generated from Obsidian notes</p>
+    </footer>
+    
+    <script src="/js/theme.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+// ============================================
+// 主样式入口 - styles.scss
+// ============================================
+
+// 1. 变量和配置（必须首先导入）
+@import "variables";
+
+// 2. Mixins（必须在基础样式和组件之前导入）
+@import "mixins";
+
+// 3. 基础样式
+@import "base";
+
+// 4. 组件
+@import "components/button";
+@import "components/form";
+@import "components/card";
+@import "components/portal";
+@import "components/theme";
+
+// ============================================
+// 页面特定样式
+// ============================================
+
+// 导航栏
+nav {
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+
+  a {
+    display: inline-block;
+    margin-right: var(--spacing-md);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+}
+
+// 笔记内容
+.note-content {
+  margin: var(--spacing-lg) 0;
+
+  a {
+    color: var(--color-primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.broken-link {
+      color: var(--color-error);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+  }
+
+  // 代码块优化
+  pre {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    overflow-x: auto;
+
+    code {
+      color: var(--color-text);
+    }
+  }
+
+  // 内联代码
+  code {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+  }
+
+  // 数学公式
+  .math {
+    overflow-x: auto;
+    margin: var(--spacing-md) 0;
+  }
+
+  // MathJax 特定样式
+  script[type="math/tex"] {
+    display: block;
+    text-align: center;
+  }
+}
+
+// 笔记导航
+.note-nav {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  @include flex-between;
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// 标签云
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+
+  .tag-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .count {
+      font-size: 0.8em;
+      margin-left: var(--spacing-xs);
+      opacity: 0.7;
+    }
+  }
+}
+
+// 面包屑导航
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    color: var(--color-text-secondary);
+  }
+
+  .current {
+    color: var(--color-text-secondary);
+  }
+}
+
+// 响应式容器
+.container {
+  @include container;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+// 主要内容区域
+main {
+  min-height: 60vh;
+}
+
+// 页脚
+footer {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+
+  a {
+    color: var(--color-primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// 实用类
+.sr-only {
+  @include sr-only;
+}
+
+.truncate {
+  @include truncate;
+}
+
+.line-clamp {
+  @include line-clamp(2);
+}
+
+// 打印样式
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+    }
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未命名 2</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <a href="/">首页</a>
+    <a href="/notes/">所有笔记</a>
+</nav>
+    </header>
+    
+    <main>
+        <article class="note">
+    <header class="note-header">
+        <h1>未命名 2</h1>
+        
+        <time datetime="2025-09-27">2025-09-27</time>
+        
+        
+        <div class="tags">
+            
+        </div>
+        
+    </header>
+    
+    <div class="note-content">
+        <p>这类前束范式的题目，核心是量词变换 + 约束变元换名，涉及的关键公式/规则：</p>
+<ol>
+<li>否定与量词的互换（量词否定等值式）</li>
+</ol>
+<p>\lnot \forall x A(x) \Leftrightarrow \exists x \lnot A(x)
+\lnot \exists x A(x) \Leftrightarrow \forall x \lnot A(x)
+（否定符“穿过”量词时，全称变存在，存在变全称，同时否定辖域内公式 ）</p>
+<ol start="2">
+<li>约束变元换名规则</li>
+</ol>
+<p>若公式中有不同量词或自由变元冲突，需换名使约束变元符号唯一，规则：</p>
+<ul>
+<li>选一个公式中未出现的变元符号代替原约束变元；</li>
+<li>该变元在辖域内所有出现处都替换，量词符号不变。</li>
+</ul>
+<ol start="3">
+<li>前束范式构造步骤（以本题为例）</li>
+</ol>
+<p>原公式：\lnot (\forall x F(x) \lor \forall x G(x))</p>
+<p>步骤1：用量词否定等值式 + 德摩根律 拆分</p>
+<p>\lnot (\forall x F(x) \lor \forall x G(x)) \Leftrightarrow \lnot \forall x F(x) \land \lnot \forall x G(x)（德摩根律：\lnot (A \lor B) \Leftrightarrow \lnot A \land \lnot B ）</p>
+<p>步骤2：应用量词否定等值式 变换</p>
+<p>\lnot \forall x F(x) \Leftrightarrow \exists x \lnot F(x)
+\lnot \forall x G(x) \Leftrightarrow \exists x \lnot G(x)
+此时公式变为：\exists x \lnot F(x) \land \exists x \lnot G(x)</p>
+<p>步骤3：约束变元换名（解决同名量词）</p>
+<p>第二个 \exists x \lnot G(x) 中的  x  与第一个 \exists x \lnot F(x) 同名，换名为  y （选未出现的变元 ），得到：
+\exists x \lnot F(x) \land \exists y \lnot G(y)</p>
+<p>步骤4：合并量词（前束化）</p>
+<p>利用“\exists x A(x) \land \exists y B(y) \Leftrightarrow \exists x \exists y (A(x) \land B(y))”，调整量词顺序并前移，最终整理为：
+\exists x \exists y (\lnot F(x) \land \lnot G(y))
+或进一步用交换律、结合律变形（本题选项B是 \exists x \exists y (\lnot F(x) \lor G(y))？可能我推导和题目选项表述有差异，核心规则是上述三条 ）</p>
+<p>总结关键公式</p>
+<ul>
+<li>量词否定：\lnot \forall x A \Leftrightarrow \exists x \lnot A；\lnot \exists x A \Leftrightarrow \forall x \lnot A</li>
+<li>德摩根律：\lnot (A \lor B) \Leftrightarrow \lnot A \land \lnot B（命题逻辑层面，可推广到谓词逻辑 ）</li>
+<li>约束变元换名：保证量词变元唯一，不冲突</li>
+</ul>
+<p>掌握这些，前束范式的转换就能按“否定穿量词→换名消冲突→量词前移”的流程解决～</p>
+
+    </div>
+    
+    <footer class="note-footer">
+        <nav class="note-nav">
+            <a href="/">返回首页</a>
+            <a href="/notes/">所有笔记</a>
+        </nav>
+    </footer>
+</article>
+    </main>
+    
+    <footer>
+        <p>Generated from Obsidian notes</p>
+    </footer>
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>

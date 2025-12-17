@@ -1,0 +1,29 @@
+---
+layout: base.njk
+---
+<article class="note">
+    <header class="note-header">
+        <h1>{{ title }}</h1>
+        {% if date %}
+        <time datetime="{{ date }}">{{ date }}</time>
+        {% endif %}
+        {% if tags %}
+        <div class="tags">
+            {% for tag in tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    
+    <div class="note-content">
+        {{ content | safe }}
+    </div>
+    
+    <footer class="note-footer">
+        <nav class="note-nav">
+            <a href="/">返回首页</a>
+            <a href="/notes/">所有笔记</a>
+        </nav>
+    </footer>
+</article>

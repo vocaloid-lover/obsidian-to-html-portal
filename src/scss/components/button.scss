@@ -1,0 +1,98 @@
+// ============================================
+// 按钮组件
+// ============================================
+
+.btn {
+  @include button-base;
+  gap: var(--spacing-sm);
+
+  // 按钮大小变体
+  &--sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+
+  &--lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+  }
+
+  // 按钮样式变体
+  &--primary {
+    background-color: var(--color-primary);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-bg-tertiary);
+    }
+  }
+
+  &--success {
+    background-color: var(--color-success);
+    color: white;
+
+    &:hover:not(:disabled) {
+      opacity: 0.85;
+    }
+  }
+
+  &--error {
+    background-color: var(--color-error);
+    color: white;
+
+    &:hover:not(:disabled) {
+      opacity: 0.85;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+
+  // 按钮宽度
+  &--block {
+    width: 100%;
+  }
+
+  // 图标按钮
+  &--icon {
+    padding: var(--spacing-sm);
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+// 按钮组
+.btn-group {
+  display: flex;
+  gap: var(--spacing-xs);
+
+  .btn {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    &:last-child {
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+  }
+}

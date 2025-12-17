@@ -1,0 +1,19 @@
+/* Error: Undefined mixin.
+ *    ,
+ * 11 | /   @include tablet-up {
+ * 12 | |     max-width: var(--max-width-container);
+ * 13 | |     margin: 0 auto;
+ * 14 | \   }
+ *    '
+ *   src\scss\components\portal.scss 11:3  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a    \2577 \a 11 \2502  \250c    @include tablet-up {\a 12 \2502  \2502      max-width: var(--max-width-container);\a 13 \2502  \2502      margin: 0 auto;\a 14 \2502  \2514    }\a    \2575 \a   src\\scss\\components\\portal.scss 11:3  root stylesheet";
+}

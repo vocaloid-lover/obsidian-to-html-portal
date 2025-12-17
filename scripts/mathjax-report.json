@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2025-12-16T05:09:26.534Z",
+  "report": [
+    {
+      "file": "src\\notes\\数学\\模形式初步 导言.md",
+      "issues": [
+        {
+          "type": "display-math-not-isolated",
+          "line": 16,
+          "excerpt": "有充分的理由定义复环面之间的同构$C/\\Lambda \\simeq C/\\Lambda'$为形如$z+\\Lambda  \\simeq\\alpha z+\\Lambda'$的全纯 映射，其中$α\\in \\mathbb{C}^{\\ast}$需满足$α\\Lambda=\\Lambda'$. 精确到同构，复环面都能表作$E_{\\uptau} := \\mathbb{C}/(\\mathbb{Z}\\uptau\\oplus \\mathbb{Z})$，其中$\\uptau$属于上半平面$\\mathscr{H}$现在记$SL(2, \\mathbb{R})$则是行列式为$1$的$2\\times 2$实矩阵对乘法构成的群,它透过线性分式变换$$\\begin{pmatrix}",
+          "message": "$$ 公式应当单独占据一行",
+          "fixable": true,
+          "suggestion": "将该行仅保留 $$，公式内容移到下一行并在结束后单独一行放置 $$"
+        },
+        {
+          "type": "display-math-not-isolated",
+          "line": 19,
+          "excerpt": "\\end{pmatrix}: \\uptau\\mapsto \\frac{a+\\uptau b}{c+\\uptau d}$$左作用在$\\mathscr{H}$上.命$SL(2,\\mathbb{Z})$为$SL(2,\\mathbb{R})$中由整系数矩阵构成的离散子群，称为模群.可以证明",
+          "message": "$$ 公式结束分隔应单独在一行",
+          "fixable": true,
+          "suggestion": "将结束的 $$ 放单独一行"
+        },
+        {
+          "type": "display-math-not-isolated",
+          "line": 25,
+          "excerpt": "- 它具备对称性$(c\\uptau+ d)^{-k} f\\left( \\frac{a+\\uptau b}{c+\\uptau d} \\right ) = f(\\uptau)$例，其中$$\\begin{pmatrix}",
+          "message": "$$ 公式应当单独占据一行",
+          "fixable": true,
+          "suggestion": "将该行仅保留 $$，公式内容移到下一行并在结束后单独一行放置 $$"
+        },
+        {
+          "type": "display-math-not-isolated",
+          "line": 28,
+          "excerpt": "\\end{pmatrix}\\in SL(2， \\mathbb{Z})$$任取.",
+          "message": "$$ 公式结束分隔应单独在一行",
+          "fixable": true,
+          "suggestion": "将结束的 $$ 放单独一行"
+        }
+      ]
+    },
+    {
+      "file": "src\\notes\\未命名 1.md",
+      "issues": [
+        {
+          "type": "display-math-not-isolated",
+          "line": 81,
+          "excerpt": "2. 存在一组轮换式$\\{ s_{m}^{(j)} \\}$使得每个初等对称多项式$e_k$$(1 \\leq k \\leq n-1)$可表示为：",
+          "message": "$$ 公式应当单独占据一行",
+          "fixable": true,
+          "suggestion": "将该行仅保留 $$，公式内容移到下一行并在结束后单独一行放置 $$"
+        },
+        {
+          "type": "unclosed-display-math",
+          "line": 81,
+          "message": "检测到未闭合的 $$ 块",
+          "fixable": false
+        }
+      ]
+    },
+    {
+      "file": "src\\notes\\证明2.2.1的模的平方细节.md",
+      "issues": [
+        {
+          "type": "display-math-not-isolated",
+          "line": 19,
+          "excerpt": "$$\\frac{d}{dt} |\\mathbf{a}(t)|^2 = \\frac{d}{dt} (\\mathbf{a}(t) \\cdot \\mathbf{a}(t)) = 2\\mathbf{a}'(t) \\cdot \\mathbf{a}(t).",
+          "message": "$$ 公式应当单独占据一行",
+          "fixable": true,
+          "suggestion": "将该行仅保留 $$，公式内容移到下一行并在结束后单独一行放置 $$"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>模形式初步 导言</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <a href="/">首页</a>
+    <a href="/notes/">所有笔记</a>
+</nav>
+    </header>
+    
+    <main class="container">
+        <article class="note">
+    <header class="note-header">
+        <h1>模形式初步 导言</h1>
+        
+        <time datetime="2025-09-27">2025-09-27</time>
+        
+        
+        <div class="tags">
+            
+        </div>
+        
+    </header>
+    
+    <div class="note-content">
+        <p>&quot;</p>
+<h1>简史</h1>
+<h2><strong>前传</strong>  书所探讨的模形式也称为椭圆模形式，以区别于更广义的版本.它起源 于求椭圆周长的经典问题i相应的积分也称为椭圆积分，可以化作</h2>
+<p>$$
+\int \frac{1 - e^2x^2}{\sqrt{(1- x^2)(1 - e^2x^2)&#125;&#125; dx(e:= 椭圆的离心率)
+$$
+的形式.当$e \ne 1$时，这类不定积分无法以初等函数表达.$N.H.Abel$和$C. G. J. Jacobi$等先驱的洞见在于视此为复平面上的道路积分，则其反函数将呈现丰富的数学内涵: 它们是复平面上对某个格$\Lambda=\mathbb{Z}u\oplus\mathbb{Z}v$具有周期性的亚纯函数，其中$u,v$是$\mathbb{C}$作为$\mathbb{R}$-向量空间的基;$\Lambda$依赖于参数$e$这样的函数称为以$\Lambda$为周期格的椭圆函数〉换言之， 它们是复环面$\mathbb{C}/\Lambda$(作为紧$Riemann$曲面)上的亚纯函数非常值椭圆函数的构造并非显然.为此,$K.Weiertrass$以收敛无穷级数定义了
+$$
+\wp\left ( z \right )=\frac{1}{z^{2&#125;&#125;+\sum_{\omega \in  \Lambda,\omega\ne0}   \left (\frac{1}{ ( z-\omega  )^{2} }-\frac{1}{\omega^{2}  }   \right )
+$$
+可以证明这确是椭圆函数，在$z=0$处有$2$阶极点.除了参数$z\in\mathbb{C}$，它还隐含一个指向复环面的参数$\Lambda$. 我们自然要问:复环面如何参数化?
+有充分的理由定义复环面之间的同构$C/\Lambda \simeq C/\Lambda'$为形如$z+\Lambda  \simeq\alpha z+\Lambda'$的全纯 映射，其中$α\in \mathbb{C}^{\ast}$需满足$α\Lambda=\Lambda'$. 精确到同构，复环面都能表作$E_{\uptau} := \mathbb{C}/(\mathbb{Z}\uptau\oplus \mathbb{Z})$，其中$\uptau$属于上半平面$\mathscr{H}$现在记$SL(2, \mathbb{R})$则是行列式为$1$的$2\times 2$实矩阵对乘法构成的群,它透过线性分式变换
+$$
+\begin{pmatrix}
+a &amp; b \<br>
+c &amp; d<br>
+\end{pmatrix}: \uptau\mapsto \frac{a+\uptau b}{c+\uptau d}
+$$
+左作用在$\mathscr{H}$上.命$SL(2,\mathbb{Z})$为$SL(2,\mathbb{R})$中由整系数矩阵构成的离散子群，称为模群.可以证明
+$$
+E_{\uptau} \simeq E_{\eta} \Longleftrightarrow \exists \gamma\in SL(2, \mathbb{Z}), \eta=\gamma\uptau
+$$
+.
+-这表明商空间$SL(2，\mathbb{Z})\setminus \mathscr{H}$完全分类了所有复环面.我们称$SL(2，\mathbb{Z})\setminus \mathscr{H}$是复环面的粗模空间.‘模&quot;字在此作&quot;参数解[^1]&quot;除了椭圆函数,至此还出现了两类饶有兴味的数学对象。</p>
+<ul>
+<li>上半平面$\mathscr{H}$对$Riemann$度量$\frac{dx^{2}+dy^{2&#125;&#125;{y^{2&#125;&#125;$构成平面双曲几何的模型，而$SL(2,\mathbb{R})$在其上的作用是保距的.</li>
+<li>复环面可以通过$\wp$和$\wp'$嵌入为复射影空间$\mathbb{P}^{2}$中的三次代数曲线，这一观点通过代数几何推广到一般域上，称为椭圆曲线.
+现在可以给出模形式最初步的定义:全纯函数$f:\mathscr{H}→\mathbb{C}$称为级为$SL(2,\mathbb{Z})$,权为$k\in Z$的模形式，如果</li>
+<li>它具备对称性$(c\uptau+ d)^{-k} f\left( \frac{a+\uptau b}{c+\uptau d} \right ) = f(\uptau)$例，其中$$\begin{pmatrix}<br>
+a &amp; b \<br>
+c &amp; d<br>
+\end{pmatrix}\in SL(2， \mathbb{Z})$$任取.</li>
+<li>当$Im(\uptau) →+∞$时$|f(\uptau)|$有界.极限$Im(\uptau) →+∞$视作商空间$SL(2，Z)\setminus \mathscr{H}$在无 穷远处的&quot;尖点&quot;，条件相当于说f在尖点处也全纯.
+在这些条件下，$f$对尖点$∞$具有称为$Fourier$展开的表达式${\textstyle \sum_{n\ge0}^{}a_{n}(f)q^{n&#125;&#125;$其中$q := e^{2ni\uptau}$.
+椭圆函数的研究自然地引出模形式举例明之，jþ(Z)在z=o处的$Laurent$展开可 以写作
+$$jþ(Z) =去+主 (n+ 1)Gn+2(A)z&quot; 00三ι2的$$取A=ZτEÐ Z，则函数Gk(A)对τe :lt'全纯，给出了一类称为Eisens田M级数的模形 式，其级为SL(2，Z)而权为 k.
+C. F. Gauss 在对算术-几何平均数的研究中很可能已经有了椭圆函数的概念，见 [45, Chapter 2]. L. Euler 的五边形数定理$$L(-l)n户&lt;'+n)12 = nEZ rr (1 _ qn) n;il'; l$$也暗藏着与模形式密切相关的Dede恤d&quot;函数. Jacobi处理平方和问题的方法依赖于级数Znezq&quot;2的解析性质和函数方程，这是因为无穷级数的乘法给出$$om=ZW)qnw:=|(叫eZm :会=n} • v .$$这同样导向一类特殊的模形式.不出所料，模形式还蕴藏于L.Kron民ker，G. Eisens缸扭， K. Weierstrass等大家关于椭圆函数的深刻工作中.
+模形式的正式赋名要等到F.Klein和R.Fricke的著作[32]他们以模形式为工具研 究形如~的Riemann曲面及其射影嵌入，其中r是SL(2，~)的离散子群，一并探讨 了r的代数性质这类商空间在复变函数论中是自然的对象，关系到阻emann曲面的 均一化问题.典型例子如下给定Ne Z~&quot;定义子群
+$$阳阳帆叫N川毗肝叫)仁阳斗'-斗=斗十十←(十← Y阿E W呐叫)仁h斗.=斗=斗十十←(十← Y问E 贝刚m叫叫N川毗h叫)仁问斗.-斗=斗{r问叫叫叫叫eS叫叩叫… s阳叩叩… u叩叩叫2η叼…叫z苟缸U …叫叫)仁川h斗才:冲币斗斗Y问斗才=才斗1 J 伽$$
+矩阵的空白部分代表O.设re{马(N)，r1(N)，r(N)}，则商空间~等分类了带相应 的级结构的复环面这些商空间具有自然的紧化，给出称为模曲线的一类复代数曲线 C复1维，实2维).如果SL(2，Z)的子群r包含某个r(町，则称r为同余子群
+模形式的对称性条件可以放宽到SL(2，~)的离散子群r，前提是vo1σ飞:ïr')有限，这 涵摄所有同余子群;但模形式在无穷远或所谓&quot;尖点&quot;处的条件将变得复杂，涉及~ 的几何.所有级r，权k的模形式构成有限维c-向量空间Mk们粗略地说，在所有尖 点附近趋近于0的模形式称为尖点形式，构成子空间Skσ).最容易写下的尖点形式当 属模判别式
+$$a(τ)=qII(l-qn户eSdSL(2,Z)), q:=产τ$$令Ek : = (2Ç(k))-lGk，其中k&gt;2为偶数.模不变量或j-不变量定义为SL(2，Z)\万上 的亚纯函数$$E.(τ)3 ._n^ E.(τ? j(-r):= ::一=1728.一-手一二丁 å(τ) E4(τ)3 -E6(τ)2 .$$它给出全纯同构SLO，ZRBr4， c，映尖点为∞，这就回答了一开始的复环面分类问 题一一我们说C是复环面的粗模空间.之所以粗，是因为我们只论同构类，不管复环面 的自同构.
+大约在同一时期，J.H. Poinc海ré始于其博士论文的研究对阻e坦学派形成了有力 的竞争.他对SL(2，~)的离散子群展开了自守形式的研究，并将这些子群(或它们在 PSL(2，~) := SL(2, ~)/{:t1} 中的像)称为 Fuchs 群.这些工作为双曲几何与离散群作 用的后续研究奠定了基础.</li>
+</ul>
+<p>[^1]:  模的原文是拉T文阳性名词modulus,复数形式为 moduli,本意是微小的度量</p>
+<p>[^2]:</p>
+
+    </div>
+    
+    <footer class="note-footer">
+        <nav class="note-nav">
+            <a href="/">返回首页</a>
+            <a href="/notes/">所有笔记</a>
+        </nav>
+    </footer>
+</article>
+    </main>
+    
+    <footer>
+        <p>Generated from Obsidian notes</p>
+    </footer>
+    
+    <script src="/js/theme.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

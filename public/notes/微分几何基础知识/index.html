@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>微分几何基础知识</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <a href="/">首页</a>
+    <a href="/notes/">所有笔记</a>
+</nav>
+    </header>
+    
+    <main class="container">
+        <article class="note">
+    <header class="note-header">
+        <h1>微分几何基础知识</h1>
+        
+        <time datetime="2025-09-27">2025-09-27</time>
+        
+        
+        <div class="tags">
+            
+        </div>
+        
+    </header>
+    
+    <div class="note-content">
+        <p>&quot;
+#向量
+<strong>定理2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式
+$$(\mathbf{a}(t) \cdot  \mathbf{b}(t))^{'} = \mathbf{a}^{'} (t) \cdot \mathbf{b}(t)+\mathbf{b}^{'}(t) \cdot \mathbf{a}(t);)$$$$(\mathbf{a}(t) \times   \mathbf{b}(t) )^{'}= \mathbf{a}^{'} (t) \times  \mathbf{b}(t)+\mathbf{b}^{'}(t) \times  \mathbf{a}(t);$$
+$$(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))^{'}=(\mathbf{a}{'}(t),\mathbf{b}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}{'}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}{'}(t)).$$
+总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足$Leibniz$律<a href="%E6%9C%89%E5%85%B3%E4%B8%89%E8%80%85%E6%BB%A1%E8%B6%B3leibniz%E5%BE%8B%E7%9A%84%E8%AF%B4%E6%98%8E.md">有关三者满足Leibniz律的说明</a></p>
+<hr>
+<p><strong>定理2.2</strong>设是$\mathbf{a}(t)$一个处处非零且连续可微的向量函数，则有</p>
+<ul>
+<li>向量函数$\mathbf{a}(t)$长度是常数当且仅当$\mathbf{a}(t) \cdot \mathbf{a}^{'}(t)\equiv0$</li>
+<li>向量函数$\mathbf{a}(t)$方向不变当且仅当$\mathbf{a}(t) \times \mathbf{a}^{'}(t)\equiv0$</li>
+<li>如果向量函数$\mathbf{a}(t)$与某个方向垂直，那么$(\mathbf{a}(t),\mathbf{a}^{'}(t),\mathbf{a}^{''}(t)\equiv0$
+反过来说，如果上式成立，且处处有$\mathbf{a}(t) \times \mathbf{a}^{'}(t) \ne0$，那么向量函数$\mathbf{a}(t)$必定与某个固定的方向垂直</li>
+</ul>
+<ol>
+<li>为什么使用模的平方？<a href="%E8%AF%81%E6%98%8E2.2.1%E7%9A%84%E6%A8%A1%E7%9A%84%E5%B9%B3%E6%96%B9%E7%BB%86%E8%8A%82.md">证明2.2.1的模的平方细节</a></li>
+</ol>
+
+    </div>
+    
+    <footer class="note-footer">
+        <nav class="note-nav">
+            <a href="/">返回首页</a>
+            <a href="/notes/">所有笔记</a>
+        </nav>
+    </footer>
+</article>
+    </main>
+    
+    <footer>
+        <p>Generated from Obsidian notes</p>
+    </footer>
+    
+    <script src="/js/theme.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
