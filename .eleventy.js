@@ -16,6 +16,10 @@ module.exports = function(eleventyConfig) {
   
   // 监听 Sass 文件变化（开发模式）
   eleventyConfig.addWatchTarget("src/scss/**/*.scss");
+  // 添加 notes 集合，基于 src/notes 下的所有 Markdown 文件
+  eleventyConfig.addCollection("notes", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/notes/**/*.md");
+  });
     // 添加一个自定义的permalink函数来解决冲突
   eleventyConfig.addFilter("notePermalink", function(title) {
     // 将中文标题转换为拼音或使用文件名
@@ -29,7 +33,7 @@ module.exports = function(eleventyConfig) {
     },
     
     // 模板引擎
-    markdownTemplateEngine: "liquid",
+    markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     
     // 为笔记设置默认的permalink模式

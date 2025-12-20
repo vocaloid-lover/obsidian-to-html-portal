@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>证明2.2.1的模的平方细节</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -39,10 +53,12 @@
 </ul>
 </li>
 </ul>
-<p>$$\frac{d}{dt} |\mathbf{a}(t)| = \frac{d}{dt} \sqrt{\mathbf{a}(t) \cdot \mathbf{a}(t)} = \frac{\mathbf{a}'(t) \cdot \mathbf{a}(t)}{|\mathbf{a}(t)|}.$$</p>
-<p>这需要额外的代数处理，且分母$\mathbf{a}(t)|$)$的存在会使表达式更复杂（尽管题目中$\mathbf{a}(t)$处处非零，保证了分母不为零）。
-- 相比之下，模的平方$|\mathbf{a}(t)|^2 = \mathbf{a}(t) \cdot \mathbf{a}(t)$的导数可以直接利用点积的乘积法则：</p>
 <p>$$
+\frac{d}{dt} |\mathbf{a}(t)| = \frac{d}{dt} \sqrt{\mathbf{a}(t) \cdot \mathbf{a}(t)} = \frac{\mathbf{a}'(t) \cdot \mathbf{a}(t)}{|\mathbf{a}(t)|}.
+$$</p>
+<p>这需要额外的代数处理，且分母$\mathbf{a}(t)|$)$的存在会使表达式更复杂（尽管题目中$\mathbf{a}(t)$处处非零，保证了分母不为零）。
+- 相比之下，模的平方$|\mathbf{a}(t)|^2 = \mathbf{a}(t) \cdot \mathbf{a}(t)$的导数可以直接利用点积的乘积法则：
+$$
 \frac{d}{dt} |\mathbf{a}(t)|^2 = \frac{d}{dt} (\mathbf{a}(t) \cdot \mathbf{a}(t)) = 2\mathbf{a}'(t) \cdot \mathbf{a}(t).
 $$
 这个结果更简洁，不涉及平方根或分式，便于后续分析。</p>
@@ -60,11 +76,11 @@ $$
 </li>
 </ul>
 <h3>2. <strong>证明的细节分析</strong></h3>
-<p>给定的证明为：
-$$
+<p>给定的证明为：</p>
+<p>$$
 \frac{d}{dt} |\mathbf{a}(t)|^{2} = \frac{d}{dt} (\mathbf{a}(t) \cdot \mathbf{a}(t)) = 2\mathbf{a}'(t) \cdot \mathbf{a}(t).
-$$
--$|\mathbf{a}(t)|^2$是常数当且仅当$\frac{d}{dt} |\mathbf{a}(t)|^2 = 0$，即$\mathbf{a}'(t) \cdot \mathbf{a}(t) \equiv 0$)。</p>
+$$</p>
+<p>-$|\mathbf{a}(t)|^2$是常数当且仅当$\frac{d}{dt} |\mathbf{a}(t)|^2 = 0$，即$\mathbf{a}'(t) \cdot \mathbf{a}(t) \equiv 0$)。</p>
 <ul>
 <li>这等价于长度$|\mathbf{a}(t)|$为常数，因为：
 <ul>
@@ -74,8 +90,8 @@ $$
 </li>
 </ul>
 <h3>3. <strong>直接使用模的证明（对比）</strong></h3>
-<p>为说明等价性，考虑直接对模求导：
-$$
+<p>为说明等价性，考虑直接对模求导：</p>
+<p>$$
 \frac{d}{dt} |\mathbf{a}(t)| = \frac{\mathbf{a}'(t) \cdot \mathbf{a}(t)}{|\mathbf{a}(t)|}.
 $$</p>
 <ul>

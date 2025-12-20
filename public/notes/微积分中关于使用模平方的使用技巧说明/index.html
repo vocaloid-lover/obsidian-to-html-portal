@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>微积分中关于使用模平方的使用技巧说明</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -31,53 +45,47 @@
     
     <div class="note-content">
         <p>&quot;
-在证明中选择构造距离函数的平方 ( f(t) = [\rho(t)]^2 ) 而非直接使用距离函数 ( \rho(t) )，是微积分中处理极值问题的常用技巧。这一做法的动机和使用原则如下：</p>
+在证明中选择构造距离函数的平方$f(t) = [\rho(t)]^2$而非直接使用距离函数$\rho(t)$，是微积分中处理极值问题的常用技巧。这一做法的动机和使用原则如下：</p>
 <hr>
 <h3><strong>动机：简化导数运算</strong></h3>
 <ol>
 <li><strong>避免平方根求导的复杂性</strong>
 <ul>
-<li>距离函数 ( \rho(t) = |\mathbf{r}(t) - \mathbf{p}| = \sqrt{ (\mathbf{r}(t) - \mathbf{p}) \cdot (\mathbf{r}(t) - \mathbf{p}) } ) 包含平方根运算。</li>
+<li>距离函数$\rho(t) = |\mathbf{r}(t) - \mathbf{p}| = \sqrt{ (\mathbf{r}(t) - \mathbf{p}) \cdot (\mathbf{r}(t) - \mathbf{p}) }$包含平方根运算。</li>
 <li>直接求导需应用链式法则：</li>
 </ul>
 </li>
 </ol>
-<p>$
-\rho'(t) = \frac{ (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t) }{ |\mathbf{r}(t) - \mathbf{p}| } = \frac{ (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t) }{ \rho(t) }.
-$</p>
-<p>分母 ( \rho(t) ) 的存在会使表达式复杂化（尤其在 ( \rho(t) \to 0 ) 时未定义，但本题中$p$不在曲线上，故 ( \rho(t) &gt; 0 )）。</p>
+<p>$\rho'(t) = \frac{ (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t) }{ |\mathbf{r}(t) - \mathbf{p}| } = \frac{ (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t) }{ \rho(t) }.$</p>
+<p>分母$\rho(t)$的存在会使表达式复杂化（尤其在$\rho(t) \to 0$时未定义，但本题中$p$不在曲线上，故$\rho(t) &gt; 0$）。</p>
 <ol start="2">
 <li><strong>平方函数的导数更简洁</strong>
 <ul>
-<li>设 ( f(t) = [\rho(t)]^2 = (\mathbf{r}(t) - \mathbf{p}) \cdot (\mathbf{r}(t) - \mathbf{p}) )。</li>
+<li>设$f(t) = [\rho(t)]^2 = (\mathbf{r}(t) - \mathbf{p}) \cdot (\mathbf{r}(t) - \mathbf{p})$。</li>
 <li>利用点积的导数法则：</li>
 </ul>
 </li>
 </ol>
-<p>$
-f'(t) = 2 (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t).
-$</p>
+<p>$f'(t) = 2 (\mathbf{r}(t) - \mathbf{p}) \cdot \mathbf{r}'(t).$</p>
 <p>该表达式<strong>无分母</strong>，形式简洁且无奇点。</p>
 <hr>
 <h3><strong>使用原则：极值点的等价性</strong></h3>
 <ul>
 <li>
 <p><strong>关键原理</strong>：<br>
-若 ( \rho(t) &gt; 0 )（本题成立），则 ( f(t) = [\rho(t)]^2 ) 与 ( \rho(t) ) 在<strong>相同点</strong>取极值。<br>
+若$\rho(t) &gt; 0$（本题成立），则$f(t) = [\rho(t)]^2$与$\rho(t)$在<strong>相同点</strong>取极值。<br>
 理由：</p>
 <ul>
-<li>平方函数 ( g(x) = x^2 ) 在$x &gt; 0$时严格单调递增（因 ( g'(x) = 2x &gt; 0 )）。</li>
-<li>因此 ( \rho(t) ) 与 ( f(t) ) 的极值点完全一致。</li>
+<li>平方函数$g(x) = x^2$在$x &gt; 0$时严格单调递增（因$g'(x) = 2x &gt; 0$）。</li>
+<li>因此$\rho(t)$与$f(t)$的极值点完全一致。</li>
 </ul>
 </li>
 <li>
 <p><strong>极值必要条件</strong>：<br>
-若$t_0$是极值点，则 ( f'(t_0) = 0 )：</p>
+若$t_0$是极值点，则$f'(t_0) = 0$：</p>
 </li>
 </ul>
-<p>$
-f'(t_0) = 2 (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0 \implies (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0.
-$</p>
+<p>$f'(t_0) = 2 (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0 \implies (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0.$</p>
 <p>直接得到正交结论。</p>
 <hr>
 <h3><strong>适用条件与一般原则</strong></h3>
@@ -85,16 +93,16 @@ $</p>
 <li>
 <p><strong>适用场景</strong>：</p>
 <ul>
-<li>目标函数含<strong>范数、距离或平方根</strong>（如 ( |\mathbf{u}(t)| )、( \text{dist}(\mathbf{a}, \mathbf{b}(t)) )）。</li>
+<li>目标函数含<strong>范数、距离或平方根</strong>（如$|\mathbf{u}(t)|$、$\text{dist}(\mathbf{a}, \mathbf{b}(t))$）。</li>
 <li>需分析该函数的极值性质时。</li>
 </ul>
 </li>
 <li>
 <p><strong>使用原则</strong>：</p>
 <ul>
-<li><strong>非负性要求</strong>：原函数需满足 ( \rho(t) \geq 0 )（通常成立），且极值点处 ( \rho(t) \neq 0 )（否则平方函数不可导）。</li>
+<li><strong>非负性要求</strong>：原函数需满足$\rho(t) \geq 0$（通常成立），且极值点处$\rho(t) \neq 0$（否则平方函数不可导）。</li>
 <li><strong>单调性验证</strong>：确保平方操作不改变极值点位置（在定义域内$x^2$单调递增）。</li>
-<li><strong>可微性前提</strong>：原函数 ( \rho(t) ) 和参数曲线 ( \mathbf{r}(t) ) 需充分可微（本题因曲线正则，满足条件）。</li>
+<li><strong>可微性前提</strong>：原函数$\rho(t)$和参数曲线$\mathbf{r}(t)$需充分可微（本题因曲线正则，满足条件）。</li>
 </ul>
 </li>
 <li>
@@ -107,15 +115,11 @@ $</p>
 </ol>
 <hr>
 <h3><strong>对比：直接求导的复杂性</strong></h3>
-<p>若直接对 ( \rho(t) ) 求导，在极值点需：</p>
-<p>$
-\rho'(t_0) = \frac{ (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) }{ \rho(t_0) } = 0.
-$</p>
-<p>由于 ( \rho(t_0) &gt; 0 )，仍需：</p>
-<p>$
-(\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0.
-$</p>
-<p><strong>结果相同，但过程中需额外处理分母</strong>，且需说明 ( \rho(t_0) \neq 0 )。</p>
+<p>若直接对$\rho(t)$求导，在极值点需：</p>
+<p>$\rho'(t_0) = \frac{ (\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) }{ \rho(t_0) } = 0.$</p>
+<p>由于$\rho(t_0) &gt; 0$，仍需：</p>
+<p>$(\mathbf{r}(t_0) - \mathbf{p}) \cdot \mathbf{r}'(t_0) = 0.$</p>
+<p><strong>结果相同，但过程中需额外处理分母</strong>，且需说明$\rho(t_0) \neq 0$。</p>
 <hr>
 <h3><strong>总结</strong></h3>
 <ul>

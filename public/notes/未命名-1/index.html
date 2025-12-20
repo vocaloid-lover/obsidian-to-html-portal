@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>未命名 1</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -35,13 +49,9 @@
 <hr>
 <h3><strong>推广的核心条件</strong></h3>
 <p>设$n$个非零整数$a_1,\dots,a_n$，定义比值：</p>
-<p>$
-\alpha_k = \frac{a_k}{a_{k+1&#125;&#125; \quad (1 \leq k \leq n-1), \quad \alpha_n = \frac{a_n}{a_1}, \quad \prod_{k=1}^n \alpha_k = 1.
-$</p>
+<p>$\alpha_k = \frac{a_k}{a_{k+1&#125;&#125; \quad (1 \leq k \leq n-1), \quad \alpha_n = \frac{a_n}{a_1}, \quad \prod_{k=1}^n \alpha_k = 1.$</p>
 <p>要证明$|a_1| = \cdots = |a_n|$，需满足：</p>
-<p>$
-\boxed{\text{所有初等对称多项式 } e_1,e_2,\dots,e_{n-1} \in \mathbb{Z&#125;&#125;
-$</p>
+<p>$\boxed{\text{所有初等对称多项式 } e_1,e_2,\dots,e_{n-1} \in \mathbb{Z&#125;&#125;$</p>
 <p>其中$e_k$是${\alpha_1,\dots,\alpha_n}$的$k$次初等对称和。</p>
 <hr>
 <h3><strong>构造轮换式条件的策略</strong></h3>
@@ -49,19 +59,13 @@ $</p>
 <ul>
 <li>一阶轮换和：</li>
 </ul>
-<p>$
-s_1^{(1)} = \sum_{k=1}^n \alpha_k \in \mathbb{Z}
-$</p>
+<p>$s_1^{(1)} = \sum_{k=1}^n \alpha_k \in \mathbb{Z}$</p>
 <ul>
 <li>二阶轮换和：</li>
 </ul>
-<p>$
-s_2^{(1)} = \sum_{k=1}^n \alpha_k \alpha_{k+1} \in \mathbb{Z} \quad (\alpha_{n+1}=\alpha_1)
-$</p>
+<p>$s_2^{(1)} = \sum_{k=1}^n \alpha_k \alpha_{k+1} \in \mathbb{Z} \quad (\alpha_{n+1}=\alpha_1)$</p>
 <p>-$m$阶轮换和：</p>
-<p>$
-s_m^{(j)} = \sum_{k=1}^n \alpha_k \alpha_{k+1} \cdots \alpha_{k+m-1} \in \mathbb{Z}
-$</p>
+<p>$s_m^{(j)} = \sum_{k=1}^n \alpha_k \alpha_{k+1} \cdots \alpha_{k+m-1} \in \mathbb{Z}$</p>
 <h4>2. <strong>关键问题：轮换和是否生成初等对称式？</strong></h4>
 <ul>
 <li><strong>$n=3$时成立</strong>：<br>
@@ -69,18 +73,14 @@ $s_1^{(1)} = e_1$，$s_2^{(1)} = \alpha_1\alpha_2 + \alpha_2\alpha_3 + \alpha_3\
 <li><strong>$n \geq 4$时不充分</strong>：<br>
 例如$n=4$时：</li>
 </ul>
-<p>$
-e_2 = \underbrace{\alpha_1\alpha_2 + \alpha_2\alpha_3 + \alpha_3\alpha_4 + \alpha_4\alpha_1}<em>{s_2^{(1)&#125;&#125; + \underbrace{\alpha_1\alpha_3 + \alpha_2\alpha_4}</em>{\text{非轮换项&#125;&#125;
-$</p>
+<p>$e_2 = \underbrace{\alpha_1\alpha_2 + \alpha_2\alpha_3 + \alpha_3\alpha_4 + \alpha_4\alpha_1}<em>{s_2^{(1)&#125;&#125; + \underbrace{\alpha_1\alpha_3 + \alpha_2\alpha_4}</em>{\text{非轮换项&#125;&#125;$</p>
 <p>仅凭$s_1^{(1)}, s_2^{(1)}$无法确定$e_2$（如前文反例）。</p>
 <h4>3. <strong>充分条件：添加独立轮换式</strong></h4>
 <ul>
 <li><strong>添加对角轮换和（Skip-2 Sums）</strong>：<br>
 对$n=4$，增加：</li>
 </ul>
-<p>$
-s_2^{(2)} = \sum_{k=1}^4 \alpha_k \alpha_{k+2} = \alpha_1\alpha_3 + \alpha_2\alpha_4 + \alpha_3\alpha_1 + \alpha_4\alpha_2 \in \mathbb{Z}
-$</p>
+<p>$s_2^{(2)} = \sum_{k=1}^4 \alpha_k \alpha_{k+2} = \alpha_1\alpha_3 + \alpha_2\alpha_4 + \alpha_3\alpha_1 + \alpha_4\alpha_2 \in \mathbb{Z}$</p>
 <p>则$e_2 = \frac{1}{2} \left( s_2^{(1)} + s_2^{(2)} \right)$。若$s_2^{(1)}, s_2^{(2)} \in \mathbb{Z}$，则$e_2 \in \mathbb{Q}$。但需进一步保证整数性。</p>
 <ul>
 <li><strong>一般情况</strong>：<br>
@@ -90,12 +90,8 @@ $</p>
 <h3><strong>严格推广定理</strong></h3>
 <p><strong>定理</strong>：设$a_1,\dots,a_n \in \mathbb{Z} \setminus {0}$，$\alpha_k = \frac{a_k}{a_{k+1&#125;&#125;$（$a_{n+1}=a_1$），满足：
 1.$\prod_{k=1}^n \alpha_k = 1$，
-2. 存在一组轮换式${ s_{m}^{(j)} }$使得每个初等对称多项式$e_k
-$$
-(1 \leq k \leq n-1)$可表示为：</p>
-<p>$
-e_k = \sum_{j} c_j^{(k)} s_{m_j}^{(j)} \quad (c_j^{(k)} \in \mathbb{Q})
-$</p>
+2. 存在一组轮换式${ s_{m}^{(j)} }$使得每个初等对称多项式$e_k$$(1 \leq k \leq n-1)$可表示为：</p>
+<p>$e_k = \sum_{j} c_j^{(k)} s_{m_j}^{(j)} \quad (c_j^{(k)} \in \mathbb{Q})$</p>
 <ol start="3">
 <li>所有$s_{m_j}^{(j)} \in \mathbb{Z}$。</li>
 </ol>
@@ -106,9 +102,7 @@ $</p>
 <li>由条件 2–3，$e_k \in \mathbb{Q}$且分母有界（因$c_j^{(k)} \in \mathbb{Q}$），但需进一步证明$e_k \in \mathbb{Z}$。</li>
 <li>构造多项式：</li>
 </ol>
-<p>$
-P(x) = \prod_{k=1}^n (x - \alpha_k) = x^n - e_1 x^{n-1} + \cdots + (-1)^n \in \mathbb{Z}[x]
-$</p>
+<p>$P(x) = \prod_{k=1}^n (x - \alpha_k) = x^n - e_1 x^{n-1} + \cdots + (-1)^n \in \mathbb{Z}[x]$</p>
 <p>（因$e_n = \prod \alpha_k = 1 \in \mathbb{Z}$）。
 3. 根$\alpha_k$是代数整数，且$\alpha_k = \frac{a_k}{a_{k+1&#125;&#125; \in \mathbb{Q}$。
 4. 由$\mathbb{Z}$在$\mathbb{Q}$上整闭，$\alpha_k \in \mathbb{Z}$。
@@ -124,14 +118,12 @@ $</p>
 <ul>
 <li><strong>$n=4$示例</strong>：要求以下轮换式为整数：</li>
 </ul>
-<p>$
-\begin{cases}
+<p>$\begin{cases}
 s_1^{(1)} = \alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 \in \mathbb{Z} \
 s_2^{(1)} = \alpha_1\alpha_2 + \alpha_2\alpha_3 + \alpha_3\alpha_4 + \alpha_4\alpha_1 \in \mathbb{Z} \
 s_2^{(2)} = \alpha_1\alpha_3 + \alpha_2\alpha_4 + \alpha_3\alpha_1 + \alpha_4\alpha_2 \in \mathbb{Z} \
 s_3^{(1)} = \alpha_1\alpha_2\alpha_3 + \alpha_2\alpha_3\alpha_4 + \alpha_3\alpha_4\alpha_1 + \alpha_4\alpha_1\alpha_2 \in \mathbb{Z}
-\end{cases}
-$</p>
+\end{cases}$</p>
 <p>则$e_1 = s_1^{(1)}$，$e_2 = \frac{1}{2} (s_2^{(1)} + s_2^{(2)})$，$e_3 = s_3^{(1)}$。若分母整除性成立（如分母为$2$时$s_2^{(1)} + s_2^{(2)}$为偶数），则$e_k \in \mathbb{Z}$。</p>
 <h4><strong>方法 3：利用牛顿恒等式</strong></h4>
 <ul>
@@ -141,14 +133,12 @@ $</p>
 <hr>
 <h3><strong>反例警示</strong></h3>
 <p>若轮换式条件不足（如$n=4$时只给$s_1^{(1)}$和$s_2^{(1)}$），则存在反例：</p>
-<p>$
-(a,b,c,d) = (1,2,1,2) \implies
+<p>$(a,b,c,d) = (1,2,1,2) \implies
 \begin{cases}
 \alpha_1=1/2,, \alpha_2=2,, \alpha_3=1/2,, \alpha_4=2 \
 s_1^{(1)} = 5 \in \mathbb{Z} \
 s_2^{(1)} = (1/2)(2) + (2)(1/2) + (1/2)(2) + (2)(1/2) = 4 \in \mathbb{Z}
-\end{cases}
-$</p>
+\end{cases}$</p>
 <p>但$|a_i|$不全等，且$e_2 = \sum_{i&lt;j} \alpha_i\alpha_j = 25/4 \notin \mathbb{Z}$。</p>
 <hr>
 <h3><strong>结论</strong></h3>

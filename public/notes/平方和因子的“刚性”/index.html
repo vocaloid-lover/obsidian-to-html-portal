@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>平方和因子的“刚性”</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -32,12 +46,12 @@
     <div class="note-content">
         <p>&quot;</p>
 <h3>第一题解答与平方和的素因子性质分析</h3>
-<p>在俄罗斯数学奥林匹克（1999年）的第一题中，给定四个正整数$a, b, c, d$，满足任意两数的平方和能被其余两数的乘积整除。解答通过素因子分析和奇偶性讨论，证明至少有三个数相等。用户问题聚焦于平方和的性质：两个平方和的乘积可表为平方和（即恒等式 ((a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2)），而本题条件是否揭示了平方和的因子存在某种“素性”。以下结合解答步骤和数论性质进行说明。</p>
+<p>在俄罗斯数学奥林匹克（1999年）的第一题中，给定四个正整数$a, b, c, d$，满足任意两数的平方和能被其余两数的乘积整除。解答通过素因子分析和奇偶性讨论，证明至少有三个数相等。用户问题聚焦于平方和的性质：两个平方和的乘积可表为平方和（即恒等式$(a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2$），而本题条件是否揭示了平方和的因子存在某种“素性”。以下结合解答步骤和数论性质进行说明。</p>
 <hr>
 <h4><strong>解答的关键步骤回顾</strong></h4>
 <ol>
 <li><strong>互质假设</strong>：<br>
-设 ((a, b, c, d) = 1)（否则除以最大公约数）。</li>
+设$(a, b, c, d) = 1$（否则除以最大公约数）。</li>
 <li><strong>奇素数分析</strong>：<br>
 取$a$的奇素因子$p$：
 <ul>
@@ -56,9 +70,7 @@
 </ul>
 </li>
 </ol>
-<p>$
-2^{t+n} \mid 2^{2m+1} \implies t + n \leq 2m + 1.
-$</p>
+<p>$2^{t+n} \mid 2^{2m+1} \implies t + n \leq 2m + 1.$</p>
 <ul>
 <li>结合其他条件（如$b d \mid a^2 + b^2$），最终解得$t = m$或$n = m$，且$a_1 d_1 \mid 2$（奇数部分），故至少三个数相等。</li>
 </ul>
@@ -73,9 +85,7 @@ $</p>
 <ul>
 <li>对$a^2 + b^2$和因子$c d$：</li>
 </ul>
-<p>$
-c d \mid a^2 + b^2.
-$</p>
+<p>$c d \mid a^2 + b^2.$</p>
 <ul>
 <li>由平方和性质，$a^2 + b^2$的素因子只能是$2$或$p \equiv 1 \pmod{4}$，或$p \equiv 3 \pmod{4}$的指数为偶数。</li>
 <li>作为因子，$c d$的素因子也受此约束（即无非$p \equiv 3 \pmod{4}$的奇指数素因子）。</li>

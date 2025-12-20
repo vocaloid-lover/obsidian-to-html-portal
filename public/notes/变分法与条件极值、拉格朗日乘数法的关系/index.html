@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>变分法与条件极值、拉格朗日乘数法的关系</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -166,8 +180,12 @@ $\text{s.t. } g(x,y,y',y'')=0$（微分约束）</p>
 <hr>
 <h2>数学本质</h2>
 <ul>
-<li><strong>统一数学框架</strong>：<br>
-$$\large \underset{\text{有限维&#125;&#125;{\nabla \mathcal{L} = 0} \quad \longleftrightarrow \quad \underset{\text{无穷维&#125;&#125;{\delta \mathcal{J}^* = 0}$$</li>
+<li><strong>统一数学框架</strong>：</li>
+</ul>
+<p>$$
+\large \underset{\text{有限维&#125;&#125;{\nabla \mathcal{L} = 0} \quad \longleftrightarrow \quad \underset{\text{无穷维&#125;&#125;{\delta \mathcal{J}^* = 0}
+$$</p>
+<ul>
 <li><strong>必要条件</strong>：两者均给出极值的<strong>必要条件</strong>，需二阶验证</li>
 <li><strong>几何解释</strong>：约束子流形与目标泛函等值面的<strong>相切条件</strong></li>
 </ul>

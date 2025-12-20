@@ -21,10 +21,15 @@ function readAllNotes(dir) {
 }
 
 function snippet(text, max=200) {
+  // 移除代码块、链接、markdown 标记
   const cleaned = text.replace(/```[\s\S]*?```/g, ' ').replace(/\[.*?\]\(.*?\)/g, ' ');
   const plain = cleaned.replace(/[#>*`$\\]/g, ' ');
   const s = plain.replace(/\s+/g, ' ').trim();
-  return s.length > max ? s.slice(0,max) + '...' : s;
+  // 若截断，留出 '...'
+  if (s.length > max) {
+    return s.slice(0, max).trim() + '...';
+  }
+  return s;
 }
 
 function buildIndex() {
@@ -46,8 +51,8 @@ function buildIndex() {
       tags,
       date,
       permalink,
-      content_snippet: snippet(content, 300),
-      content: snippet(content, 2000)
+      content_snippet: snippet(content, 150),  // 搜索结果展示用，150 字
+      content: snippet(content, 5000)           // 完整内容用于 Lunr 索引，5000 字
     });
   });
 

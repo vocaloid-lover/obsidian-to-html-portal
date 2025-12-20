@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>有关三者满足Leibniz律的说明</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -31,10 +45,16 @@
     
     <div class="note-content">
         <p>&quot;</p>
-<p><strong>定理 2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则它们的内积、外积、混合积的导数有下面的公式：
-$$\frac{d}{dt} [\mathbf{a}(t) \cdot \mathbf{b}(t)] = \mathbf{a}'(t) \cdot \mathbf{b}(t) + \mathbf{a}(t) \cdot \mathbf{b}'(t);$$
-$$\frac{d}{dt} [\mathbf{a}(t) \times \mathbf{b}(t)] = \mathbf{a}'(t) \times \mathbf{b}(t) + \mathbf{a}(t) \times \mathbf{b}'(t);$$
-$$\frac{d}{dt} [(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))] = (\mathbf{a}'(t),\mathbf{b}(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}'(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}'(t)).$$</p>
+<p><strong>定理 2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则它们的内积、外积、混合积的导数有下面的公式：</p>
+<p>$$
+\frac{d}{dt} [\mathbf{a}(t) \cdot \mathbf{b}(t)] = \mathbf{a}'(t) \cdot \mathbf{b}(t) + \mathbf{a}(t) \cdot \mathbf{b}'(t);
+$$</p>
+<p>$$
+\frac{d}{dt} [\mathbf{a}(t) \times \mathbf{b}(t)] = \mathbf{a}'(t) \times \mathbf{b}(t) + \mathbf{a}(t) \times \mathbf{b}'(t);
+$$</p>
+<p>$$
+\frac{d}{dt} [(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))] = (\mathbf{a}'(t),\mathbf{b}(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}'(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}'(t)).
+$$</p>
 <p><strong>总结</strong>：<br>
 您的总结正确。证明运用导数的乘法公式（乘积法则），再进行组合即可。因内积（点积）、外积（叉积）、混合积（标量三重积）都可视为向量空间中的乘法运算（双线性形式），故三者都满足 <strong>Leibniz 律的推广形式</strong>：导数公式为各向量函数的导数与其余函数的乘积之和。</p>
 <p><strong>补充说明</strong>：</p>

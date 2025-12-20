@@ -1,0 +1,60 @@
+---
+layout: base.njk
+title: "我的知识库门户"
+permalink: index.html
+---
+<section class="portal-hero">
+  <div class="hero-content">
+    <h1>📚 我的知识库</h1>
+    <p class="tagline">一个整理、记录、分享知识的地方</p>
+  </div>
+</section>
+
+<section class="portal">
+  <div class="portal-intro">
+    <p>欢迎来到我的知识库！这是一个由Obsidian笔记构建的静态网站，汇集了我在数学、物理、计算机科学等领域的学习笔记。</p>
+  </div>
+
+  <div class="portal-controls">
+    <div class="search-box">
+      <input id="search-input" type="text" placeholder="🔍 搜索笔记关键词..." aria-label="搜索笔记" />
+    </div>
+    <div class="filters">
+      <label for="tag-filter">📌 按标签筛选：</label>
+      <select id="tag-filter">
+        <option value="">查看全部</option>
+      </select>
+    </div>
+    <button id="theme-toggle" class="theme-btn" aria-label="切换主题" aria-pressed="false" title="点击切换主题">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </div>
+
+  <div class="notes-list">
+    <h2>✨ 最近笔记</h2>
+    <ul id="notes-container">
+      {% for note in collections.notes | reverse %}
+        {% if loop.index0 < 10 %}
+          {% set tags_str = note.data.tags | join(', ') if note.data.tags else '' %}
+          <li class="note-item" data-tags="{{ tags_str }}">
+            <a href="{{ note.url }}" class="note-link"><strong>{{ note.data.title }}</strong></a>
+            <div class="meta">📅 {{ note.data.date }}{% if tags_str %} • {{ tags_str }}{% endif %}</div>
+            <p class="excerpt">{{ note.templateContent | striptags | truncate(150) }}</p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div id="search-results" class="search-results" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="portal-footer">
+    <p>📖 共有 <strong>{{ collections.notes | length }}</strong> 条笔记 | <a href="/notes/">查看所有笔记</a></p>
+  </div>
+</section>
+
+<script src="/js/theme.js"></script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script src="/js/search.js"></script>
+
+

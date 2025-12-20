@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>我的知识库门户</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -16,31 +30,156 @@
     </header>
     
     <main class="container">
-        <h1>我的Obsidian笔记库</h1>
-<p>欢迎来到我的知识库！这里包含了我所有的学习笔记。</p>
-<section class="portal">
-    <div class="portal-controls">
-        <input id="search-input" placeholder="搜索笔记（支持关键词）" aria-label="搜索笔记" />
-        <div class="filters">
-            <label>按标签:</label>
-            <select id="tag-filter">
-                <option value="">全部</option>
-            </select>
-        </div>
-        <button id="theme-toggle" aria-label="切换主题" aria-pressed="false" title="点击切换主题，右键显示更多选项">
-            <span class="theme-icon">🌙</span>
-        </button>
-    </div>
-<p><div class="notes-list">
-<h2>按日期最近排序</h2>
-<ul></p>
-<p></ul>
-</div></p>
-<p><div id="search-results" class="search-results" aria-live="polite"></div></p>
+        <section class="portal-hero">
+  <div class="hero-content">
+    <h1>📚 我的知识库</h1>
+    <p class="tagline">一个整理、记录、分享知识的地方</p>
+  </div>
 </section>
-<p><script src="/js/theme.js"></script>
+
+<section class="portal">
+  <div class="portal-intro">
+    <p>欢迎来到我的知识库！这是一个由Obsidian笔记构建的静态网站，汇集了我在数学、物理、计算机科学等领域的学习笔记。</p>
+  </div>
+
+  <div class="portal-controls">
+    <div class="search-box">
+      <input id="search-input" type="text" placeholder="🔍 搜索笔记关键词..." aria-label="搜索笔记" />
+    </div>
+    <div class="filters">
+      <label for="tag-filter">📌 按标签筛选：</label>
+      <select id="tag-filter">
+        <option value="">查看全部</option>
+      </select>
+    </div>
+    <button id="theme-toggle" class="theme-btn" aria-label="切换主题" aria-pressed="false" title="点击切换主题">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </div>
+
+  <div class="notes-list">
+    <h2>✨ 最近笔记</h2>
+    <ul id="notes-container">
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/证明2.2.1的模的平方细节/" class="note-link"><strong>证明2.2.1的模的平方细节</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 1. 为什么使用模的平方？ 导数运算更简单： 模的定义为$|&#92;mathbf{a}(t)| = &#92;sqrt{&#92;mathbf{a}(t) &#92;cdot &#92;mathbf{a}(t)}$。如果直接对模求导，会涉及平方根函数的链式法则： $$ &#92;frac{d}{dt}...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/欧拉常数-γ-3/" class="note-link"><strong>欧拉常数 γ 3</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 您的思考非常深刻，欧拉常数 γ...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/未命名/" class="note-link"><strong>未命名</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 推广的可行性分析：从三元到多元的 Vieta 构造 推广思路 考虑$n$个非零整数$a_1, a_2, &#92;dots, a_n$，定义比值： $&#92;alpha_k = &#92;frac{a_k}{a_{k+1&#125;&#125; &#92;quad (1 &#92;leq k &#92;leq n-1), &#92;quad &#92;alpha_n...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/未命名-2/" class="note-link"><strong>未命名 2</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 这类前束范式的题目，核心是量词变换 + 约束变元换名，涉及的关键公式/规则： 否定与量词的互换（量词否定等值式） &#92;lnot &#92;forall x A(x) &#92;Leftrightarrow &#92;exists x &#92;lnot A(x) &#92;lnot &#92;exists x A(x)...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/未命名-1/" class="note-link"><strong>未命名 1</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 是的，要推广结论到更多变量（$n &#92;geq 4$），需要增加足够多且适当形式的有理轮换式作为条件，才能保证所有初等对称多项式为整数，从而得出绝对值相等的结论。以下是系统分析： 推广的核心条件 设$n$个非零整数$a_1,&#92;dots,a_n$，定义比值： $&#92;alpha_k =...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/有关三者满足leibniz律的说明/" class="note-link"><strong>有关三者满足Leibniz律的说明</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 定理 2.1 假定$&#92;mathbf{a}(t),&#92;mathbf{b}(t),&#92;mathbf{c}(t)$是三个可微的向量函数，则它们的内积、外积、混合积的导数有下面的公式： $$ &#92;frac{d}{dt} [&#92;mathbf{a}(t) &#92;cdot &#92;mathbf{b}(t)] =...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/模形式初步-导言/" class="note-link"><strong>模形式初步 导言</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 简史 前传 书所探讨的模形式也称为椭圆模形式，以区别于更广义的版本.它起源 于求椭圆周长的经典问题i相应的积分也称为椭圆积分，可以化作 $$ &#92;int &#92;frac{1 - e^2x^2}{&#92;sqrt{(1- x^2)(1 - e^2x^2)&#125;&#125; dx(e:= 椭圆的离心率) $$...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/引入-hopf-代数的动机/" class="note-link"><strong>引入 Hopf 代数的动机</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 引入 Hopf 代数的动机主要源于数学内部发展的需求，特别是在以下几个相互关联的领域中需要更强大、更灵活的结构来描述对称性、作用和对偶性： 代数拓扑（Algebraic Topology） - H-空间的同调理论： 核心动机： Heinz Hopf 在研究拓扑群（如李群）或更一般的...</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/哑运算/" class="note-link"><strong>哑运算</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 哑运算（）</p>
+          </li>
+        
+      
+        
+          
+          <li class="note-item" data-tags="">
+            <a href="/notes/变分法与条件极值、拉格朗日乘数法的关系/" class="note-link"><strong>变分法与条件极值、拉格朗日乘数法的关系</strong></a>
+            <div class="meta">📅 2025-09-27</div>
+            <p class="excerpt">&amp;quot; 变分法与条件极值、拉格朗日乘数法的关系 核心联系 统一本质：变分法是无穷维空间中的优化问题，拉格朗日乘数法是处理约束的工具，两者通过约束极值思想统一 关键桥梁：拉格朗日乘数法从有限维（函数）推广到无穷维（泛函），形成变分法中处理约束的系统方法 对应关系框架 1. 问题类型对比 维度...</p>
+          </li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+
+  <div id="search-results" class="search-results" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="portal-footer">
+    <p>📖 共有 <strong>17</strong> 条笔记 | <a href="/notes/">查看所有笔记</a></p>
+  </div>
+</section>
+
+<script src="/js/theme.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
-<script src="/js/search.js"></script></p>
+<script src="/js/search.js"></script>
+
+
 
     </main>
     

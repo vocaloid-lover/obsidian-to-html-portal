@@ -6,6 +6,20 @@
     <meta name="color-scheme" content="light dark">
     <title>微分几何基础知识</title>
     <link rel="stylesheet" href="/css/styles.css">
+        <!-- MathJax for TeX rendering -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['$$','$$'], ['\\[','\\]']],
+                    processEscapes: true
+                },
+                options: {
+                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -32,10 +46,14 @@
     <div class="note-content">
         <p>&quot;
 #向量
-<strong>定理2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式
-$$(\mathbf{a}(t) \cdot  \mathbf{b}(t))^{'} = \mathbf{a}^{'} (t) \cdot \mathbf{b}(t)+\mathbf{b}^{'}(t) \cdot \mathbf{a}(t);)$$$$(\mathbf{a}(t) \times   \mathbf{b}(t) )^{'}= \mathbf{a}^{'} (t) \times  \mathbf{b}(t)+\mathbf{b}^{'}(t) \times  \mathbf{a}(t);$$
-$$(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))^{'}=(\mathbf{a}{'}(t),\mathbf{b}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}{'}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}{'}(t)).$$
-总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足$Leibniz$律<a href="%E6%9C%89%E5%85%B3%E4%B8%89%E8%80%85%E6%BB%A1%E8%B6%B3leibniz%E5%BE%8B%E7%9A%84%E8%AF%B4%E6%98%8E.md">有关三者满足Leibniz律的说明</a></p>
+<strong>定理2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式</p>
+<p>$$
+(\mathbf{a}(t) \cdot  \mathbf{b}(t))^{'} = \mathbf{a}^{'} (t) \cdot \mathbf{b}(t)+\mathbf{b}^{'}(t) \cdot \mathbf{a}(t);)$$$$(\mathbf{a}(t) \times   \mathbf{b}(t) )^{'}= \mathbf{a}^{'} (t) \times  \mathbf{b}(t)+\mathbf{b}^{'}(t) \times  \mathbf{a}(t);
+$$</p>
+<p>$$
+(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))^{'}=(\mathbf{a}{'}(t),\mathbf{b}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}{'}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}{'}(t)).
+$$</p>
+<p>总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足$Leibniz$律<a href="%E6%9C%89%E5%85%B3%E4%B8%89%E8%80%85%E6%BB%A1%E8%B6%B3leibniz%E5%BE%8B%E7%9A%84%E8%AF%B4%E6%98%8E.md">有关三者满足Leibniz律的说明</a></p>
 <hr>
 <p><strong>定理2.2</strong>设是$\mathbf{a}(t)$一个处处非零且连续可微的向量函数，则有</p>
 <ul>

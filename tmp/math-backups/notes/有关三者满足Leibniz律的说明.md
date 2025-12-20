@@ -12,23 +12,15 @@ tags: []
 
 **定理 2.1** 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则它们的内积、外积、混合积的导数有下面的公式：
 
-
 $$
 \frac{d}{dt} [\mathbf{a}(t) \cdot \mathbf{b}(t)] = \mathbf{a}'(t) \cdot \mathbf{b}(t) + \mathbf{a}(t) \cdot \mathbf{b}'(t);
 $$
 
-
-
-$$
-\frac{d}{dt} [\mathbf{a}(t) \times \mathbf{b}(t)] = \mathbf{a}'(t) \times \mathbf{b}(t) + \mathbf{a}(t) \times \mathbf{b}'(t);
-$$
-
-
+$$\frac{d}{dt} [\mathbf{a}(t) \times \mathbf{b}(t)] = \mathbf{a}'(t) \times \mathbf{b}(t) + \mathbf{a}(t) \times \mathbf{b}'(t);$$
 
 $$
 \frac{d}{dt} [(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))] = (\mathbf{a}'(t),\mathbf{b}(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}'(t),\mathbf{c}(t)) + (\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}'(t)).
 $$
-
 
 
 **总结**：  
