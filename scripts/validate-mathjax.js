@@ -45,11 +45,13 @@ function validateMathJax(content, filePath) {
     // 检查3: 检查常见LaTeX错误
     const commonErrors = [
         {
-            regex: /\$\s+/g,
+            // 仅匹配单个 $ 后紧跟的空格（不包含换行，避免误报 $$ 与独占行）
+            regex: /(?<!\$)\$[ \t\u00A0\u3000\u2009]+/g,
             message: '公式内部不应该有前导空格'
         },
         {
-            regex: /\s+\$/g,
+            // 仅匹配单个 $ 前紧跟的空格（不包含换行）
+            regex: /[ \t\u00A0\u3000\u2009]+\$(?!\$)/g,
             message: '公式末尾不应该有尾随空格'
         },
         {
@@ -125,18 +127,33 @@ function validateMathJax(content, filePath) {
 // 修复常见问题
 function fixMathJax(content) {
     let fixed = content;
-    
-    // 修复1: 移除 $ 前后的空格
-    fixed = fixed.replace(/\$ +/g, '$');
-    fixed = fixed.replace(/ +\$/g, '$');
-    
+
+    // 规范化一些常见的空白字符（NBSP、全角空格、窄空格等）为普通空格
+    fixed = fixed.replace(/[\u00A0\u3000\u2009]/g, ' ');
+
+    // 修复1: 移除 $ 前后的空白字符（包括非断行空格）
+    fixed = fixed.replace(/\$\s+/g, '$');
+    fixed = fixed.replace(/\s+\$/g, '$');
+
+    // 小工具: 修剪 Unicode 空白
+    const trimUnicode = s => s.replace(/^[\s\u00A0\u3000\u2009]+|[\s\u00A0\u3000\u2009]+$/g, '');
+
     // 修复2: 将 \( ... \) 转换为 $ ... $
-    fixed = fixed.replace(/\\\(([^\)]*)\\\)/g, '$$$1$$');
-    
-    // 修复3: 将 \[ ... \] 转换为 $$ ... $$
-    // 需要小心处理，确保两端都在单独的行上
-    fixed = fixed.replace(/\\\[[\s\n]*/g, '\n$$\n');
-    fixed = fixed.replace(/[\s\n]*\\\]/g, '\n$$\n');
+    fixed = fixed.replace(/\\\(([\s\S]*?)\\\)/g, function(m, g1){ return '$' + trimUnicode(g1) + '$'; });
+
+    // 修复2.5: 修剪单个 $ ... $ 内部的前后空白
+    fixed = fixed.replace(/(?<!\$)\$([^\$]*?)\$(?!\$)/g, function(m, g1){ return '$' + trimUnicode(g1) + '$'; });
+
+    // 修复3: 将 \[ ... \] 转换为 $$ ... $$（确保独占行）
+    fixed = fixed.replace(/\\\[[\s\S]*?\\\]/g, function(m){
+        const inner = trimUnicode(m.replace(/\\\[|\\\]/g, ''));
+        return '\n$$\n' + inner + '\n$$\n';
+    });
+
+    // 修复4: 将现存的 $$ ... $$ 确保独占行（将行内 $$ 提取到单独的段落）
+    fixed = fixed.replace(/\$\$([\s\S]*?)\$\$/g, function(m, g1){
+        return '\n$$\n' + trimUnicode(g1) + '\n$$\n';
+    });
     
     return fixed;
 }
@@ -154,16 +171,21 @@ function processDirectory(dir, checkOnly = false) {
             totalIssues += processDirectory(itemPath, checkOnly);
         } else if (item.endsWith('.md')) {
             let content = fs.readFileSync(itemPath, 'utf8');
-            const issues = validateMathJax(content, itemPath);
-            totalIssues += issues.length;
+            let issues = validateMathJax(content, itemPath);
+            let finalIssuesCount = issues.length;
             
             if (!checkOnly && issues.length > 0) {
                 const fixed = fixMathJax(content);
                 if (fixed !== content) {
                     fs.writeFileSync(itemPath, fixed, 'utf8');
                     console.log(`   ✓ 已自动修复`);
+                    // 重新验证已修复的内容，更新最终的问题计数
+                    const issuesAfter = validateMathJax(fixed, itemPath);
+                    finalIssuesCount = issuesAfter.length;
                 }
             }
+            
+            totalIssues += finalIssuesCount;
         }
     });
     

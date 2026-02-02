@@ -13,6 +13,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/search");
+  // 将根目录下的 image 文件夹复制到输出，确保 logo 等静态资源可访问
+  eleventyConfig.addPassthroughCopy("image");
   
   // 监听 Sass 文件变化（开发模式）
   eleventyConfig.addWatchTarget("src/scss/**/*.scss");
