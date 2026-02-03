@@ -66,9 +66,10 @@ function processFile(filePath) {
     const slugMatch = fm.match(/(?:^|\n)slug:\s*(.+)\s*(?:\n|$)/);
     const permalinkMatch = fm.match(/(?:^|\n)permalink:\s*(.+)\s*(?:\n|$)/);
     if (slugMatch) {
-      slug = slugMatch[1].trim().replace(/\/.+$/, '').replace(/\s+/g, '-').toLowerCase();
+      slug = slugMatch[1].trim().replace(/^['\"]|['\"]$/g, '').replace(/\/.+$/, '').replace(/\s+/g, '-').toLowerCase();
     } else if (permalinkMatch) {
-      const p = permalinkMatch[1].trim();
+      let p = permalinkMatch[1].trim();
+      p = p.replace(/^['\"]|['\"]$/g, '');
       slug = p.replace(/\/$/, '').split('/').slice(-1)[0].replace(/\s+/g, '-').toLowerCase();
     }
   }
