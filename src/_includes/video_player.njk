@@ -1,0 +1,10 @@
+{# src/_includes/video_player.njk #}
+<div class="video-player-wrap">
+  <video class="video-player" controls preload="metadata" poster="{{ poster | default('/image/video-placeholder.jpg') }}" playsinline>
+    <source src="{{ src }}" type="video/mp4">
+    你的浏览器不支持视频播放。
+  </video>
+  {% if caption %}
+    <p class="video-caption">{{ caption }}</p>
+  {% endif %}
+</div>

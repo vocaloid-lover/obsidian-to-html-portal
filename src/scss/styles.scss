@@ -2,21 +2,22 @@
 // 主样式入口 - styles.scss
 // ============================================
 
-// 1. 变量和配置（必须首先导入）
-@import "variables";
+// 1. 变量和配置（模块化 @use 替代 @import）
+@use "variables" as *;
 
-// 2. Mixins（必须在基础样式和组件之前导入）
-@import "mixins";
+// 2. Mixins（模块化导入）
+@use "mixins" as *;
 
 // 3. 基础样式
-@import "base";
+@use "base" as *;
 
 // 4. 组件
-@import "components/button";
-@import "components/form";
-@import "components/card";
-@import "components/portal";
-@import "components/theme";
+@use "components/button" as *;
+@use "components/form" as *;
+@use "components/card" as *;
+@use "components/portal" as *;
+@use "components/theme" as *;
+@use "components/video" as *;
 
 // ============================================
 // 页面特定样式

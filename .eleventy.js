@@ -15,9 +15,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/search");
   // 将根目录下的 image 文件夹复制到输出，确保 logo 等静态资源可访问
   eleventyConfig.addPassthroughCopy("image");
+  // 支持将仓库根目录的 videos/ 直接 passthrough 到输出（供用户放置外部视频文件）
+  eleventyConfig.addPassthroughCopy("videos");
   
   // 监听 Sass 文件变化（开发模式）
   eleventyConfig.addWatchTarget("src/scss/**/*.scss");
+  // 监听视频目录变化（如果你在仓库中维护 videos/）
+  eleventyConfig.addWatchTarget("videos/**/*");
   // 添加 notes 集合，基于 src/notes 下的所有 Markdown 文件
   eleventyConfig.addCollection("notes", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/notes/**/*.md");

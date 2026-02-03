@@ -19,6 +19,17 @@ layout: base.njk
     <div class="note-content">
         {{ content | safe }}
     </div>
+
+    {# Videos (if any) #}
+    {% set slug = page.fileSlug or (page.url | trim('/') | split('/') | last) %}
+    {% set videos = video_index[slug] %}
+    {% if videos %}
+      <div class="note-videos">
+        {% for v in videos %}
+          {% include "video_player.njk" with { src: v.filename, poster: v.poster, caption: v.caption } %}
+        {% endfor %}
+      </div>
+    {% endif %}
     
     <footer class="note-footer">
         <nav class="note-nav">
