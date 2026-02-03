@@ -82,7 +82,7 @@
 
 <!-- 社交媒体链接（SVG 图标） -->
 <div class="social-links">
-  <a href="https://github.com/FYZ9628/vue-workpigai" title="GitHub" target="_blank">
+  <a href="https://github.com/vocaloid-lover/obsidian-to-html-portal" title="GitHub" target="_blank">
     <svg><!-- GitHub Icon --></svg>
   </a>
   <a href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank">
