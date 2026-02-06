@@ -495,6 +495,49 @@ npm run preprocess
 
 ---
 
+### 在笔记中嵌入视频
+
+- **语法示例**：在笔记 Markdown 中直接使用指令（支持可选说明）：
+
+  ![[video: path/to/file.mp4 | 可选说明文本]]
+
+  例如：
+
+  ![[video: ../videos/sample-demo.mp4 | 示例视频演示]]
+
+- **支持的路径**：相对笔记文件的路径或仓库内路径（如 `videos/sample-demo.mp4`）。收集器会在 `src/notes` 中查找引用的视频文件，或从仓库根目录尝试读取并复制到网站输出目录。
+
+- **预处理与构建流程**：
+  - 运行收集器以扫描笔记并生成视频索引：
+
+```bash
+node scripts/collect-videos.js
+```
+
+  - 或运行完整构建（包含收集器）：
+
+```bash
+npm run build
+```
+
+- **生成的文件与位置**：
+  - 视频会被复制到 `public/videos/<note-slug>/`。
+  - 自动生成的海报（thumbnail）放在 `public/image/videos/<note-slug>/<basename>-thumb.jpg`（当系统检测到已安装 `ffmpeg` 时自动生成）。
+  - 全局索引文件：`src/_data/video_index.json`（模板在渲染时读取此索引以在笔记页面渲染播放器）。
+
+- **备份**：在移除笔记内嵌指令前，收集器会将原始笔记备份到 `tmp/video-backups/<note-slug>/`。
+
+- **手动生成海报（可选）**：
+
+```bash
+ffmpeg -y -ss 00:00:01 -i path/to/video.mp4 -vframes 1 -q:v 2 out-thumb.jpg
+```
+
+- **常见注意事项**：
+  - 如果 `src/_data/video_index.json` 被损坏或为空，收集器会尝试从已存在的 `public/videos` 文件夹重建索引。
+  - 模板会把一篇笔记下的所有视频逐一渲染；若看到重复播放器，请检查笔记是否重复包含了指令或模板中是否多次包含播放器部分。
+
+
 ## 技术栈总结
 
 | 类别 | 技术 | 版本 |
