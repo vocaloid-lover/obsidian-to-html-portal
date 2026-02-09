@@ -23,10 +23,14 @@ layout: base.njk
     {# Videos (if any) #}
     {% set slug = page.fileSlug or (page.url | trim('/') | split('/') | last) %}
     {% set videos = video_index[slug] %}
+    <!-- DEBUG: slug={{ slug }}, video-index-defined={{ (video_index is defined) }}, video-index-size={{ video_index | length }}, videos-defined={{ (video_index[slug] is defined) }} -->
     {% if videos %}
       <div class="note-videos">
         {% for v in videos %}
-          {% include "video_player.njk" with { src: v.filename, poster: v.poster, caption: v.caption } %}
+          {% set src = v.filename %}
+          {% set poster = v.poster %}
+          {% set caption = v.caption %}
+          {% include "video_player.njk" %}
         {% endfor %}
       </div>
     {% endif %}

@@ -1,1 +1,9 @@
-{}
+{
+  "demo-video": [
+    {
+      "filename": "/videos/demo-video/sample-demo.mp4",
+      "poster": "/image/videos/demo-video/sample-demo-thumb.jpg",
+      "caption": null
+    }
+  ]
+}

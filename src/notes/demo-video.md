@@ -10,6 +10,6 @@ tags: []
 
 示例嵌入语法：
 
-![video: videos/sample-demo.mp4](broken:示例视频演示)
+
 
 下面是正文结束。
