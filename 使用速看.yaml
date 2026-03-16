@@ -1,0 +1,22 @@
+# 项目速查表
+常用命令:
+  启动开发: npm run serve
+  生产构建: npm run build
+  预处理: npm run preprocess
+  清理: npm run clean
+
+文件路径:
+  笔记源文件: src/notes/
+  配置文件: .eleventy.js
+  样式目录: src/scss/
+  脚本目录: scripts/
+
+重要文件:
+  首页模板: src/index.njk
+  基础模板: src/_includes/base.njk
+  搜索索引: search/index.json
+
+联系方式:
+  作者: Chen Jiarui
+  更新: 定期查看 README.md
+  问题: 提交 GitHub Issue
