@@ -88,7 +88,12 @@ export const createRenderer = (root) => {
     refs.problemHints.textContent = state.currentLevel.hint || "";
   };
 
+  const renderTitle = (state) => {
+    refs.problemTitle.textContent = state.currentLevel.title || "题目";
+  };
+
   const renderAll = (state) => {
+    renderTitle(state);
     renderLevels(state);
     renderMeta(state);
     renderHints(state);
