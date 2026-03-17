@@ -66,11 +66,23 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-lg);
+  align-items: start;
 }
 
 @media (max-width: 900px) {
   .lab-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .lab-toolbar {
+    align-items: stretch;
+  }
+
+  .lab-field,
+  .lab-toolbar .btn {
+    width: 100%;
   }
 }
 
@@ -80,8 +92,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: var(--spacing-md);
   border-radius: var(--radius-md);
   background: var(--color-bg-tertiary);
   border: 1px dashed var(--color-border);
+  overflow-x: auto;
 }

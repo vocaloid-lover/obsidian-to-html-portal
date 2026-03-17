@@ -24,6 +24,7 @@
   gap: var(--spacing-sm);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  line-height: 1.4;
 }
 
 .lab-hints {
@@ -47,9 +48,20 @@
   background: var(--color-bg);
 }
 
+@media (max-width: 720px) {
+  .lab-tool {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-tool .btn {
+    width: 100%;
+  }
+}
+
 .lab-tool.is-recommended {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-bg));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .lab-tool h3 {
@@ -81,15 +93,23 @@
   font-size: var(--font-size-sm);
 }
 
+.lab-history-item span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
 .lab-history-item .lab-history-math {
   background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
+  overflow-x: auto;
 }
 
 .lab-empty {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) 0;
 }
 
 .lab-divider {
