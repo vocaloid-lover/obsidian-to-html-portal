@@ -1,7 +1,7 @@
 ---
 title: "有关三者满足Leibniz律的说明"
 layout: "note.njk"
-date: "2025-09-27"
+date: "2026-03-16"
 permalink: "/notes/有关三者满足leibniz律的说明/index.html"
 tags: []
 ---

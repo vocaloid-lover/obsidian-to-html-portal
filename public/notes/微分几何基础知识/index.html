@@ -47,7 +47,7 @@
     <a href="/notes/">所有笔记</a>
 </nav>
                                 <div class="social-links" style="display:flex;gap:0.5rem;align-items:center;">
-                                                    <a class="social-btn" href="https://github.com/FYZ9628/vue-workpigai" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
+                                                    <a class="social-btn" href="https://github.com/vocaloid-lover/obsidian-to-html-portal" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
                                                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18.92-.26 1.91-.39 2.9-.39s1.98.13 2.9.39c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.8 1.07.8 2.16 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
                                                     </a>
                                                     <a class="social-btn" href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank" rel="noopener" aria-label="Bilibili">
@@ -88,7 +88,7 @@
     <header class="note-header">
         <h1>微分几何基础知识</h1>
         
-        <time datetime="2025-09-27">2025-09-27</time>
+        <time datetime="2026-03-16">2026-03-16</time>
         
         
         <div class="tags">
@@ -100,21 +100,21 @@
     <div class="note-content">
         <p>&quot;
 #向量
-<strong>定理2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式</p>
+<strong>定理2.1</strong> 假定$\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t)$是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式
+$$
+(\mathbf{a}(t) \cdot  \mathbf{b}(t))^{'} = \mathbf{a}^{'} (t) \cdot \mathbf{b}(t)+\mathbf{b}^{'}(t) \cdot \mathbf{a}(t);)
+$$</p>
 <p>$$
-(\mathbf{a}(t) \cdot  \mathbf{b}(t))^{'} = \mathbf{a}^{'} (t) \cdot \mathbf{b}(t)+\mathbf{b}^{'}(t) \cdot \mathbf{a}(t);)$$$$(\mathbf{a}(t) \times   \mathbf{b}(t) )^{'}= \mathbf{a}^{'} (t) \times  \mathbf{b}(t)+\mathbf{b}^{'}(t) \times  \mathbf{a}(t);
+(\mathbf{a}(t) \times   \mathbf{b}(t) )^{'}= \mathbf{a}^{'} (t) \times  \mathbf{b}(t)+\mathbf{b}^{'}(t) \times  \mathbf{a}(t);
 $$</p>
 <p>$$
 (\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}(t))^{'}=(\mathbf{a}{'}(t),\mathbf{b}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}{'}(t),\mathbf{c}(t))+(\mathbf{a}(t),\mathbf{b}(t),\mathbf{c}{'}(t)).
-$$</p>
-<p>总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足$Leibniz$律<a href="%E6%9C%89%E5%85%B3%E4%B8%89%E8%80%85%E6%BB%A1%E8%B6%B3leibniz%E5%BE%8B%E7%9A%84%E8%AF%B4%E6%98%8E.md">有关三者满足Leibniz律的说明</a></p>
+$$
+总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足$Leibniz$律<a href="%E6%9C%89%E5%85%B3%E4%B8%89%E8%80%85%E6%BB%A1%E8%B6%B3leibniz%E5%BE%8B%E7%9A%84%E8%AF%B4%E6%98%8E.md">有关三者满足Leibniz律的说明</a></p>
 <hr>
 <p><strong>定理2.2</strong>设是$\mathbf{a}(t)$一个处处非零且连续可微的向量函数，则有</p>
 <ul>
-<li>向量函数$\mathbf{a}(t)$长度是常数当且仅当$\mathbf{a}(t) \cdot \mathbf{a}^{'}(t)\equiv0$</li>
-<li>向量函数$\mathbf{a}(t)$方向不变当且仅当$\mathbf{a}(t) \times \mathbf{a}^{'}(t)\equiv0$</li>
-<li>如果向量函数$\mathbf{a}(t)$与某个方向垂直，那么$(\mathbf{a}(t),\mathbf{a}^{'}(t),\mathbf{a}^{''}(t)\equiv0$
-反过来说，如果上式成立，且处处有$\mathbf{a}(t) \times \mathbf{a}^{'}(t) \ne0$，那么向量函数$\mathbf{a}(t)$必定与某个固定的方向垂直</li>
+<li>向量函数$\mathbf{a}(t)$长度是常数当且仅当$\mathbf{a}(t) \cdot \mathbf{a}^{'}(t)\equiv0$- 向量函数$\mathbf{a}(t)$方向不变当且仅当$\mathbf{a}(t) \times \mathbf{a}^{'}(t)\equiv0$- 如果向量函数$\mathbf{a}(t)$与某个方向垂直，那么$(\mathbf{a}(t),\mathbf{a}^{'}(t),\mathbf{a}^{''}(t)\equiv0$反过来说，如果上式成立，且处处有$\mathbf{a}(t) \times \mathbf{a}^{'}(t) \ne0$，那么向量函数$\mathbf{a}(t)$必定与某个固定的方向垂直</li>
 </ul>
 <ol>
 <li>为什么使用模的平方？<a href="%E8%AF%81%E6%98%8E2.2.1%E7%9A%84%E6%A8%A1%E7%9A%84%E5%B9%B3%E6%96%B9%E7%BB%86%E8%8A%82.md">证明2.2.1的模的平方细节</a></li>
