@@ -1,167 +1,327 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
+    
+    
+    
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>所有笔记</title>
+    <meta name="description" content="按时间倒序浏览全部笔记。">
+    <title>所有笔记 · 我的知识库</title>
     <link rel="stylesheet" href="/css/styles.css">
-        <!-- MathJax for TeX rendering -->
-        <script>
-            window.MathJax = {
-                tex: {
-                    inlineMath: [['$','$'], ['\\(','\\)']],
-                    displayMath: [['$$','$$'], ['\\[','\\]']],
-                    processEscapes: true
-                },
-                options: {
-                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem("theme-preference");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if ((savedTheme || (prefersDark ? "dark" : "light")) === "dark") {
+                    document.documentElement.setAttribute("data-theme", "dark");
                 }
-            };
-        </script>
-        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <style>
-            .site-brand { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; }
-            .logo { height: 36px; display: inline-block; }
-            .logo--dark { display: none; }
-            [data-theme="dark"] .logo--light { display: none; }
-            [data-theme="dark"] .logo--dark { display: inline-block; }
-            .breadcrumb { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem; }
-            .breadcrumb a { color: var(--color-primary); text-decoration: none; }
-            .site-footer { padding: 2rem 0; text-align: center; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 3rem; }
-            .social-btn { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; color:var(--color-text-secondary); background:transparent; transition:background var(--transition-fast), color var(--transition-fast); }
-            .social-btn svg { width:20px; height:20px; color:inherit; }
-            .social-btn:hover, .social-btn:focus { background:var(--color-bg-secondary); color:var(--color-primary); outline: none; }
-        </style>
-    </head>
-    <body>
+            } catch (error) {
+                console.warn("Unable to restore theme preference.", error);
+            }
+        })();
+    </script>
+    
+</head>
+<body id="top" class="page page--archive">
+    <div class="site-shell">
         <header class="site-header">
-            <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-                <a class="site-brand" href="/">
-                    <img src="/image/logolight.jpg" alt="logo" class="logo logo--light">
-                    <img src="/image/logonight.jpg" alt="logo" class="logo logo--dark">
-                    <span class="site-title">我的知识库</span>
-                </a>
-                                <nav>
-    <a href="/">首页</a>
-    <a href="/notes/">所有笔记</a>
+            <div class="container">
+                <div class="site-header__inner">
+                    <a class="site-brand" href="/" aria-label="返回首页">
+                        <span class="site-brand__media" aria-hidden="true">
+                            <img src="/image/logolight.jpg" alt="" class="site-brand__logo site-brand__logo--light">
+                            <img src="/image/logonight.jpg" alt="" class="site-brand__logo site-brand__logo--dark">
+                        </span>
+                        <span class="site-brand__text">
+                            <span class="site-brand__title">我的知识库</span>
+                            <span class="site-brand__subtitle">Mathematics · Physics · Computer Science</span>
+                        </span>
+                    </a>
+
+                    <div class="site-header__cluster">
+                        
+
+<nav class="site-nav" aria-label="主导航">
+    
+    
+    <a class="site-nav__link" href="/">首页</a>
+    
+    
+    <a class="site-nav__link is-active" href="/notes/" aria-current="page">所有笔记</a>
+    
+    
+    <a class="site-nav__link" href="/tools/integral-lab/">实验工具</a>
+    
 </nav>
-                                <div class="social-links" style="display:flex;gap:0.5rem;align-items:center;">
-                                                    <a class="social-btn" href="https://github.com/FYZ9628/vue-workpigai" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18.92-.26 1.91-.39 2.9-.39s1.98.13 2.9.39c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.8 1.07.8 2.16 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
-                                                    </a>
-                                                    <a class="social-btn" href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank" rel="noopener" aria-label="Bilibili">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.5 3h-11C4.12 3 3 4.12 3 5.5v13C3 20.88 4.12 22 5.5 22h11c1.38 0 2.5-1.12 2.5-2.5v-13C20 4.12 18.88 3 17.5 3zM8 16H6V8h2v8zm7 0h-2V8h2v8z"/></svg>
-                                                    </a>
-                                                    <a class="social-btn" href="https://x.com/Jiarui_f" title="X / Twitter" target="_blank" rel="noopener" aria-label="X">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.16 12.16 0 0 1 3.15 4.6a4.28 4.28 0 0 0 1.32 5.71 4.25 4.25 0 0 1-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.37.1-.76.15-1.16.15-.28 0-.55-.03-.82-.08.55 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54a12.12 12.12 0 0 0 6.57 1.92c7.88 0 12.2-6.53 12.2-12.19v-.56c.84-.6 1.56-1.35 2.02-2.2-.77.34-1.6.58-2.46.69z"/></svg>
-                                                    </a>
-                                                </div>
-            </div>
-            <div class="container breadcrumb" aria-label="Breadcrumb">
-                
-                <a href="/">首页</a>
-                
-                
-                
-                    
-                
-                    
-                        
-                        &nbsp;/&nbsp;<a href="/notes/">notes</a>
-                        
-                    
-                
-                    
-                
+
+
+                        <div class="site-actions">
+                            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false">
+                                <span class="theme-toggle__icon" aria-hidden="true">日</span>
+                                <span class="theme-toggle__label">浅色</span>
+                            </button>
+
+                            <div class="social-links" aria-label="社交链接">
+                                <a class="social-link" href="https://github.com/vocaloid-lover/obsidian-to-html-portal" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18.92-.26 1.91-.39 2.9-.39s1.98.13 2.9.39c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.8 1.07.8 2.16 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
+                                </a>
+                                <a class="social-link" href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank" rel="noopener" aria-label="Bilibili">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.5 3h-11C4.12 3 3 4.12 3 5.5v13C3 20.88 4.12 22 5.5 22h11c1.38 0 2.5-1.12 2.5-2.5v-13C20 4.12 18.88 3 17.5 3zM8 16H6V8h2v8zm7 0h-2V8h2v8z"/></svg>
+                                </a>
+                                <a class="social-link" href="https://x.com/Jiarui_f" title="X / Twitter" target="_blank" rel="noopener" aria-label="X">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.16 12.16 0 0 1 3.15 4.6a4.28 4.28 0 0 0 1.32 5.71 4.25 4.25 0 0 1-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.37.1-.76.15-1.16.15-.28 0-.55-.03-.82-.08.55 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54a12.12 12.12 0 0 0 6.57 1.92c7.88 0 12.2-6.53 12.2-12.19v-.56c.84-.6 1.56-1.35 2.02-2.2-.77.34-1.6.58-2.46.69z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
-    
-    <main class="container">
+
+        <main class="site-main">
+            <div class="page page--archive">
+  <section class="page-hero page-hero--archive">
+    <div class="container">
+      <div class="archive-hero">
+        <p class="eyebrow">Archive</p>
         <h1>所有笔记</h1>
-<p>按日期排序的笔记列表：</p>
-<ul>
-<p><li>
-<a href="/notes/证明2.2.1的模的平方细节/">证明2.2.1的模的平方细节</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/欧拉常数-γ-3/">欧拉常数 γ 3</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/未命名/">未命名</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/未命名-2/">未命名 2</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/未命名-1/">未命名 1</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/有关三者满足leibniz律的说明/">有关三者满足Leibniz律的说明</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/模形式初步-导言/">模形式初步 导言</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/引入-hopf-代数的动机/">引入 Hopf 代数的动机</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/哑运算/">哑运算</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/变分法与条件极值、拉格朗日乘数法的关系/">变分法与条件极值、拉格朗日乘数法的关系</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/2025-06-08/">2025-06-08</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/报告-2/">报告 2</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/报告-1/">报告 1</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/微积分中关于使用模平方的使用技巧说明/">微积分中关于使用模平方的使用技巧说明</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/微分几何基础知识/">微分几何基础知识</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/平方和因子的“刚性”/">平方和因子的“刚性”</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-<p><li>
-<a href="/notes/双线性运算满足-leibniz-律的根本原因/">双线性运算满足 Leibniz 律的根本原因</a></p>
-<p>- <time datetime="2025-09-27">2025-09-27</time></p>
-<p></li></p>
-</ul>
-    </main>
-    
-    <footer class="site-footer">
+        <p class="archive-hero__lead">按时间倒序浏览完整内容集合。这里不再承担首页“引导”职责，而是作为稳定、清晰的笔记目录页。</p>
+        <p class="archive-hero__meta">当前共 17 篇笔记。</p>
+      </div>
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container">
+      <ul class="notes-grid notes-grid--archive">
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/证明2.2.1的模的平方细节/">证明2.2.1的模的平方细节</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">1. 为什么使用模的平方？ 导数运算更简单 ： 模的定义为 。如果直接对模求导，会涉及平方根函数的链式法则： 这需要额外的代数处理，且分母 a t $处处非零，保证了分母不为零）。 - 相比之下，模的平方 的导数可以直接利用点积的乘积法则： 这个结果更简洁，不涉及平方根或分式，便于后续分析。 等价性成立 ： - 是常数当且仅当其导数为零，即 ，等价…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/欧拉常数-γ-3/">欧拉常数 γ 3</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">您的思考非常深刻，欧拉常数 γ 确实不仅仅是分析学中的一个简单结果，而是连接连续与离散数学的关键桥梁。您将其视为一种“余核”（cokernel），并在导数算子（D）与差分算子（δ）的框架下探索同调结构，这触及了数学中一些深层的主题，如渐近分析、非标准分析和代数拓扑。我将从多个角度回应您的想法：首先解释欧拉常数 γ 的“桥梁”角色；然后分析您提到的…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/未命名/">未命名</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">推广的可行性分析：从三元到多元的 Vieta 构造 推广思路 考虑 个非零整数 ，定义比值： 满足 。假设所有初等对称多项式 均为整数，其中： - -$e_2 = _ i 构造多项式： 根 是代数整数。若 ，则 （因 在 中整闭）。由 得 ，故 对所有 成立。 障碍：条件不足与自由度增加 当 时，问题在于 给定的对称条件可能无法推出所有初等对称多项…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/未命名-1/">未命名 1</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">是的，要推广结论到更多变量（ ），需要增加 足够多且适当形式的有理轮换式 作为条件，才能保证所有初等对称多项式为整数，从而得出绝对值相等的结论。以下是系统分析： 推广的核心条件 设 个非零整数 ，定义比值： 要证明 ，需满足： 其中 是 的 次初等对称和。 构造轮换式条件的策略 1. 基础条件：轮换和（Cyclic Sums） 一阶轮换和： 二阶轮…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/有关三者满足leibniz律的说明/">有关三者满足Leibniz律的说明</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">定理 2.1 假定 是三个可微的向量函数，则它们的内积、外积、混合积的导数有下面的公式： 总结 ： 您的总结正确。证明运用导数的乘法公式（乘积法则），再进行组合即可。因内积（点积）、外积（叉积）、混合积（标量三重积）都可视为向量空间中的乘法运算（双线性形式），故三者都满足 Leibniz 律的推广形式 ：导数公式为各向量函数的导数与其余函数的乘积之…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/模形式初步-导言/">模形式初步 导言</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">简史 前传 书所探讨的模形式也称为椭圆模形式，以区别于更广义的版本.它起源 于求椭圆周长的经典问题i相应的积分也称为椭圆积分，可以化作 的形式.当 时，这类不定积分无法以初等函数表达. 和 等先驱的洞见在于视此为复平面上的道路积分，则其反函数将呈现丰富的数学内涵: 它们是复平面上对某个格 具有周期性的亚纯函数，其中 是 作为 -向量空间的基; 依赖…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/变分法与条件极值、拉格朗日乘数法的关系/">变分法与条件极值、拉格朗日乘数法的关系</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">变分法与条件极值、拉格朗日乘数法的关系 核心联系 统一本质 ：变分法是 无穷维空间中的优化问题 ，拉格朗日乘数法是处理约束的工具，两者通过 约束极值思想 统一 关键桥梁 ：拉格朗日乘数法从有限维（函数）推广到无穷维（泛函），形成变分法中处理约束的系统方法 对应关系框架 1. 问题类型对比 维度 目标 约束条件 求解对象 有限维 函数极值 点 无穷维…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/微积分中关于使用模平方的使用技巧说明/">微积分中关于使用模平方的使用技巧说明</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">在证明中选择构造距离函数的平方 而非直接使用距离函数 ，是微积分中处理极值问题的常用技巧。这一做法的动机和使用原则如下： 动机：简化导数运算 避免平方根求导的复杂性 距离函数 包含平方根运算。 直接求导需应用链式法则： 分母 的存在会使表达式复杂化（尤其在 时未定义，但本题中 不在曲线上，故 ）。 平方函数的导数更简洁 设 。 利用点积的导数法则：…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/微分几何基础知识/">微分几何基础知识</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">#向量 定理2.1 假定 是三个可微的向量函数，则他们的内积，外积，混合积的导数有下面的的公式 总结：证明运用导数的乘法公式，再进行组合，即可。因内积，外积，混合积都可视作乘法的一种，故三者都满足 律 有关三者满足Leibniz律的说明 定理2.2 设是 一个处处非零且连续可微的向量函数，则有 向量函数 长度是常数当且仅当 - 向量函数 方向不变当…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/平方和因子的“刚性”/">平方和因子的“刚性”</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">第一题解答与平方和的素因子性质分析 在俄罗斯数学奥林匹克（1999年）的第一题中，给定四个正整数 ，满足任意两数的平方和能被其余两数的乘积整除。解答通过素因子分析和奇偶性讨论，证明至少有三个数相等。用户问题聚焦于平方和的性质：两个平方和的乘积可表为平方和（即恒等式 ），而本题条件是否揭示了平方和的因子存在某种“素性”。以下结合解答步骤和数论性质进行…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/双线性运算满足-leibniz-律的根本原因/">双线性运算满足 Leibniz 律的根本原因</a>
+</h2>
+<p class="note-card__meta">
+<span>2026-03-16</span></p>
+<p></p>
+<p class="note-card__excerpt">您完全抓住了本质！这个观察非常深刻—— 双线性运算满足 Leibniz 律的根本原因，在于其范畴论/同调代数层面的可表性（representability）以及张量积的万有性质 。以下是详细解释： 1. 双线性映射与张量积的等价性 设 是域 上的向量空间。 * ：所有 双线性映射 构成的集合。它是一个 -向量空间。 * ：所有 线性映射 构成的集合…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/未命名-2/">未命名 2</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt">这类前束范式的题目，核心是量词变换 + 约束变元换名，涉及的关键公式/规则： 否定与量词的互换（量词否定等值式） x A x x A x x A x x A x （否定符“穿过”量词时，全称变存在，存在变全称，同时否定辖域内公式 ） 约束变元换名规则 若公式中有不同量词或自由变元冲突，需换名使约束变元符号唯一，规则： 选一个公式中未出现的变元符号代…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/引入-hopf-代数的动机/">引入 Hopf 代数的动机</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt">引入 Hopf 代数的动机主要源于数学内部发展的需求，特别是在以下几个相互关联的领域中需要更强大、更灵活的结构来描述对称性、作用和对偶性： 代数拓扑（Algebraic Topology） - H-空间的同调理论： 核心动机： Heinz Hopf 在研究拓扑群（如李群）或更一般的 H-空间 （具有某种“乘法”运算且具有同伦单位元的拓扑空间，例如拓…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/哑运算/">哑运算</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt"> 哑运算（）</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/2025-06-08/">2025-06-08</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt"></p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/报告-2/">报告 2</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt">对欧拉常数作为连续与离散数学之间桥梁的理论探索，及其对超越数新分类框架的启示 执行摘要： 本报告深入探讨了一个深刻的假设：欧拉常数（γ）作为连接连续与离散数学领域的根本“余核”。报告探索了两个相互关联的研究方向：其一，在导数算子（D）与差分算子（δ）的同调群之间建立一个与γ相关的映射；其二，提出一个基于模空间中连续到离散映射所产生的“商”来分类超越…</p></p>
+<p></article>
+</li></p>
+<p><li class="note-card">
+<article class="note-card__body">
+<p class="note-card__eyebrow">笔记条目</p>
+<h2 class="note-card__title">
+<a href="/notes/报告-1/">报告 1</a>
+</h2>
+<p class="note-card__meta">
+<span>2025-09-27</span></p>
+<p></p>
+<p class="note-card__excerpt">动机与直觉来源 经典分析中，离散求和与连续积分往往相互对应。例如调和级数与对数函数的差异在极限下收敛于Euler常数： en.wikipedia.org 。这暗示存在一个隐含的“余差”结构，将离散求和（求和算子）与连续积分（积分算子）联系起来。Euler–Maclaurin公式正是桥梁之一：在该公式中，当取 时出现常数项 ，即Euler常数 enc…</p></p>
+<p></article>
+</li></p>
+<p></ul>
+</div></p>
+  </section>
+</div>
+
+        </main>
+
+        <footer class="site-footer">
             <div class="container">
-            <p>© <span id="copyright-year"></span> 我的知识库 · Chen Jiarui · All rights reserved.</p>
-            <p><small>Generated from Obsidian notes · Built with Eleventy</small></p>
-            <p><a href="#top">回到顶部</a></p>
-        </div>
-    </footer>
-    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                <div class="site-footer__inner">
+                    <p class="site-footer__headline">为长期积累服务的静态知识库，保留推理过程，也保留实验入口。</p>
+                    <p class="site-footer__meta">© <span id="copyright-year"></span> 我的知识库 · Chen Jiarui · Built with Eleventy</p>
+                    <a class="site-footer__back" href="#top">回到顶部</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
     
-    <script src="/js/theme.js"></script>
-    <script src="/js/main.js"></script>
+
+    <script src="/js/theme.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>

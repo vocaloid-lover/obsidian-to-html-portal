@@ -1,7 +1,7 @@
 ---
 title: "双线性运算满足 Leibniz 律的根本原因"
 layout: "note.njk"
-date: "2025-09-27"
+date: "2026-03-16"
 permalink: "/notes/双线性运算满足-leibniz-律的根本原因/index.html"
 tags: []
 ---

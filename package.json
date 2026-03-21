@@ -5,18 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "node scripts/clean-public.js",
     "preprocess:frontmatter": "node scripts/add-frontmatter.js",
     "preprocess:links": "node scripts/convert-links.js",
     "preprocess:math": "node scripts/validate-mathjax.js",
     "preprocess:search": "node scripts/generate-search-index.js",
     "validate": "node scripts/validate-and-report.js",
     "preprocess": "npm run preprocess:frontmatter && npm run preprocess:links && npm run preprocess:math && npm run preprocess:search",
-    "styles": "sass src/scss/styles.scss public/css/style.css",
-    "styles:watch": "sass --watch src/scss:public/css --no-source-map",
-    "styles:prod": "sass src/scss/styles.scss public/css/style.css --no-source-map && postcss public/css/style.css -r",
-    "build": "npm run styles:prod && npm run preprocess && eleventy",
-    "serve": "npm run styles && npm run preprocess && eleventy --serve",
-    "dev": "npm run styles:watch & npm run preprocess && eleventy --serve --watch"
+    "styles": "sass src/scss/styles.scss public/css/styles.css",
+    "styles:watch": "sass --watch src/scss/styles.scss public/css/styles.css --no-source-map",
+    "styles:prod": "sass src/scss/styles.scss public/css/styles.css --no-source-map && postcss public/css/styles.css -r",
+    "build": "npm run clean && npm run styles:prod && npm run preprocess && eleventy",
+    "serve": "npm run clean && npm run styles && npm run preprocess && eleventy --serve",
+    "dev": "npm run clean && npm run styles:watch & npm run preprocess && eleventy --serve --watch"
   },
   "keywords": [
     "obsidian",

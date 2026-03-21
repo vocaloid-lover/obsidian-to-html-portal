@@ -1,0 +1,147 @@
+﻿// ============================================
+// Integral Lab components
+// ============================================
+
+.lab-card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.lab-card-title {
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.lab-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.lab-hints {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.lab-tools {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.lab-tool {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-sm);
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+@media (max-width: 720px) {
+  .lab-tool {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-tool .btn {
+    width: 100%;
+  }
+}
+
+.lab-tool.is-recommended {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-bg));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.lab-tool h3 {
+  margin: 0;
+  font-size: var(--font-size-md);
+}
+
+.lab-tool p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.lab-history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.lab-history-item {
+  border-left: 3px solid var(--color-border);
+  padding-left: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.lab-history-item strong {
+  font-size: var(--font-size-sm);
+}
+
+.lab-history-item span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.lab-history-item .lab-history-math {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  overflow-x: auto;
+}
+
+.lab-expression mjx-container[display="true"],
+.lab-history-math mjx-container[display="true"] {
+  margin: 0 !important;
+  padding: var(--spacing-xs) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.lab-expression mjx-container,
+.lab-history-math mjx-container {
+  max-width: 100%;
+}
+
+.lab-empty {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) 0;
+}
+
+.lab-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--color-border);
+  display: inline-block;
+  margin: 0 var(--spacing-xs);
+}
+
+.lab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: white;
+  font-size: var(--font-size-xs);
+  margin-left: var(--spacing-xs);
+}
