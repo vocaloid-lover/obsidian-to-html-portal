@@ -1,69 +1,141 @@
 ---
 layout: base.njk
-title: "我的知识库门户"
+title: "我的知识库"
+description: "一个整理、推演、记录与实验的长期空间。"
+pageClass: "page page--home"
 permalink: index.html
 ---
-<section class="portal-hero">
-  <div class="hero-content">
-    <h1>📚 我的知识库</h1>
-    <p class="tagline">一个整理、记录、分享知识的地方</p>
-  </div>
-</section>
+<div class="page page--home">
+  <section class="hero-band">
+    <div class="container">
+      <div class="home-hero">
+        <div class="home-hero__content">
+          <p class="eyebrow">Knowledge Garden</p>
+          <h1>我的知识库</h1>
+          <p class="home-hero__lead">一个整理、推演、记录与实验的长期空间，让笔记不只被保存，也能再次进入思考。</p>
+          <div class="home-hero__meta">
+            <span>{{ collections.notes | length }} 篇笔记</span>
+            <span>静态发布</span>
+            <span>支持全文搜索</span>
+          </div>
+        </div>
 
-<section class="portal">
-  <div class="portal-intro">
-    <p>欢迎来到我的知识库！这是一个由Obsidian笔记构建的静态网站，汇集了我在数学、物理、计算机科学等领域的学习笔记。</p>
-  </div>
-
-  <div class="portal-controls">
-    <div class="search-box">
-      <input id="search-input" type="text" placeholder="🔍 搜索笔记关键词..." aria-label="搜索笔记" />
+        <div class="home-hero__aside">
+          <p class="home-hero__aside-label">站点说明</p>
+          <p>这里主要整理数学、物理、计算机科学相关笔记，也保留一些实验性工具页面，用来验证“笔记 + 工具”能否形成一个更完整的学习界面。</p>
+          <a class="btn btn--ghost" href="/notes/">浏览全部笔记</a>
+        </div>
+      </div>
     </div>
-    <div class="filters">
-      <label for="tag-filter">📌 按标签筛选：</label>
-      <select id="tag-filter">
-        <option value="">查看全部</option>
-      </select>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="portal-panel portal-panel--controls">
+        <div class="portal-search">
+          <label class="portal-label" for="search-input">搜索笔记</label>
+          <div class="portal-search__field">
+            <input id="search-input" type="search" placeholder="输入关键词，按标题、标签或正文检索" aria-label="搜索笔记">
+            <button id="search-clear" class="search-clear" type="button" hidden>重置</button>
+          </div>
+        </div>
+
+        <div class="portal-filter">
+          <label class="portal-label" for="tag-filter">主题筛选</label>
+          <select id="tag-filter" aria-label="按标签筛选">
+            <option value="">查看全部主题</option>
+          </select>
+        </div>
+
+        <p id="search-status" class="portal-status">当前展示最近更新的 10 篇笔记。输入关键词或选择主题后，将切换到独立结果区。</p>
+      </div>
     </div>
-    <button id="theme-toggle" class="theme-btn" aria-label="切换主题" aria-pressed="false" title="点击切换主题">
-      <span class="theme-icon">🌙</span>
-    </button>
-  </div>
+  </section>
 
-  <div class="notes-list">
-    <h2>✨ 最近笔记</h2>
-    <ul id="notes-container">
-      {% for note in collections.notes | reverse %}
-        {% if loop.index0 < 10 %}
-          {% set tags_str = note.data.tags | join(', ') if note.data.tags else '' %}
-          <li class="note-item" data-tags="{{ tags_str }}">
-            <a href="{{ note.url }}" class="note-link"><strong>{{ note.data.title }}</strong></a>
-            <div class="meta">📅 {{ note.data.date }}{% if tags_str %} • {{ tags_str }}{% endif %}</div>
-            <p class="excerpt">{{ note.templateContent | striptags | truncate(150) }}</p>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
+  <section class="page-section" id="search-panel" hidden>
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Search</p>
+          <h2>搜索结果</h2>
+        </div>
+        <p id="search-summary" class="section-heading__meta">这里会显示关键词或标签对应的笔记结果。</p>
+      </div>
 
-  <div id="search-results" class="search-results" aria-live="polite" aria-atomic="true"></div>
-
-  <div class="portal-tools">
-    <h2>实验工具</h2>
-    <div class="card">
-      <h3>Integral Lab V1</h3>
-      <p>规则驱动的积分交互实验页面，包含预设题目与有限工具链路。</p>
-      <a class="btn btn--primary" href="/tools/integral-lab/">进入 Integral Lab</a>
+      <div id="search-results" class="notes-grid notes-grid--search" aria-live="polite" aria-atomic="true"></div>
     </div>
-  </div>
+  </section>
 
-  <div class="portal-footer">
-    <p>📖 共有 <strong>{{ collections.notes | length }}</strong> 条笔记 | <a href="/notes/">查看所有笔记</a></p>
-  </div>
-</section>
+  <section class="page-section" id="recent-panel">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Recent Notes</p>
+          <h2>最近笔记</h2>
+        </div>
+        <p class="section-heading__meta">保留首页的“近期入口”角色，只展示最近更新的 10 篇内容。</p>
+      </div>
 
-<script src="/js/theme.js"></script>
-<script src="https://unpkg.com/lunr/lunr.js"></script>
-<script src="/js/search.js"></script>
+      <ul id="notes-container" class="notes-grid notes-grid--recent">
+        {% for note in collections.notes | reverse %}
+          {% if loop.index0 < 10 %}
+            {% set tag_text = note.data.tags | join(',') if note.data.tags else '' %}
+            <li class="note-card" data-tags="{{ tag_text }}">
+              <article class="note-card__body">
+                <p class="note-card__eyebrow">最近更新</p>
+                <h3 class="note-card__title">
+                  <a href="{{ note.url }}">{{ note.data.title }}</a>
+                </h3>
+                <p class="note-card__meta">
+                  <span>{{ note.data.date }}</span>
+                  {% if note.data.tags and note.data.tags | length %}
+                  <span>·</span>
+                  <span>{{ note.data.tags | join(' · ') }}</span>
+                  {% endif %}
+                </p>
+                <p class="note-card__excerpt">{{ note.templateContent | excerpt(164) }}</p>
+                {% if note.data.tags and note.data.tags | length %}
+                <div class="note-card__tags">
+                  {% for tag in note.data.tags %}
+                  <span class="tag-pill">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </article>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 
+  <section class="page-section page-section--secondary">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Explore</p>
+          <h2>探索入口</h2>
+        </div>
+        <p class="section-heading__meta">把“浏览全部内容”和“进入实验工具”并列展示，首页信息架构会更清晰。</p>
+      </div>
 
+      <div class="feature-grid">
+        <article class="feature-card">
+          <p class="feature-card__eyebrow">Archive</p>
+          <h3>查看完整笔记目录</h3>
+          <p>按时间倒序浏览所有条目，适合系统性回顾和查找旧内容。</p>
+          <a class="btn btn--secondary" href="/notes/">进入所有笔记</a>
+        </article>
+
+        <article class="feature-card feature-card--accent">
+          <p class="feature-card__eyebrow">Lab</p>
+          <h3>进入 Integral Lab V1</h3>
+          <p>一个规则驱动的积分实验页面，用工具化交互验证数学操作流程。</p>
+          <a class="btn btn--primary" href="/tools/integral-lab/">打开实验工具</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="/js/search.js" defer></script>

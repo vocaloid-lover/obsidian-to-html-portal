@@ -1,29 +1,64 @@
 ---
 layout: base.njk
+pageClass: "page page--note"
 ---
-<article class="note">
-    <header class="note-header">
-        <h1>{{ title }}</h1>
-        {% if date %}
-        <time datetime="{{ date }}">{{ date }}</time>
-        {% endif %}
-        {% if tags %}
-        <div class="tags">
-            {% for tag in tags %}
-            <span class="tag">#{{ tag }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </header>
-    
-    <div class="note-content">
-        {{ content | safe }}
-    </div>
-    
-    <footer class="note-footer">
-        <nav class="note-nav">
-            <a href="/">返回首页</a>
-            <a href="/notes/">所有笔记</a>
-        </nav>
-    </footer>
-</article>
+<div class="page page--note">
+    <article class="note-page">
+        <header class="note-hero">
+            <div class="container">
+                <div class="note-hero__inner">
+                    <nav class="note-breadcrumb" aria-label="页面导航">
+                        <a href="/">首页</a>
+                        <span>/</span>
+                        <a href="/notes/">笔记</a>
+                    </nav>
+
+                    <p class="eyebrow">Note</p>
+                    <h1>{{ title }}</h1>
+
+                    <div class="note-hero__meta">
+                        {% if date %}
+                        <time datetime="{{ date }}">{{ date }}</time>
+                        {% endif %}
+                        <span>Obsidian Source</span>
+                    </div>
+
+                    {% if tags and tags | length %}
+                    <div class="note-card__tags">
+                        {% for tag in tags %}
+                        <span class="tag-pill">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="note-layout">
+                    <div class="note-content-shell">
+                        <div class="note-content">
+                            {{ content | safe }}
+                        </div>
+                    </div>
+
+                    <aside class="note-aside" aria-label="辅助信息">
+                        <div class="note-aside__card">
+                            <p class="note-aside__eyebrow">快速跳转</p>
+                            <a href="/">返回首页</a>
+                            <a href="/notes/">查看全部笔记</a>
+                        </div>
+
+                        {% if date %}
+                        <div class="note-aside__card">
+                            <p class="note-aside__eyebrow">发布日期</p>
+                            <p>{{ date }}</p>
+                        </div>
+                        {% endif %}
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </article>
+</div>

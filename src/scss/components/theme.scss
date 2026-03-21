@@ -1,164 +1,43 @@
-// ============================================
-// 主题管理 UI 组件样式
-// ============================================
-
-// 主题切换按钮
-#theme-toggle {
-  @include button-base;
-  padding: var(--spacing-sm);
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-md);
-  background-color: var(--color-bg-secondary);
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.9rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-strong);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
-  font-size: 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .theme-icon {
-    display: inline-block;
-    width: 1.2em;
-    height: 1.2em;
-  }
-
-  &:hover {
-    background-color: var(--color-bg-tertiary);
-  }
-
-  &.active {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-}
-
-// 主题菜单
-.theme-menu {
-  position: fixed;
-  z-index: var(--z-dropdown);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  min-width: 150px;
-  overflow: hidden;
-  animation: slideIn var(--transition-fast) ease-out;
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-.theme-menu__item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
-  border: none;
-  width: 100%;
-  text-align: left;
-  background: none;
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family-base);
-
-  &:hover {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-primary);
-  }
-
-  &:active {
-    background-color: var(--color-bg-tertiary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
-  }
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
-.theme-menu__icon {
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-border-strong);
+  background: rgba(var(--color-primary-rgb), 0.08);
+}
+
+.theme-toggle__icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
-  font-size: 1.1em;
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-primary);
+  font-size: 0.92rem;
+  font-weight: var(--font-weight-semibold);
+  transition: transform var(--transition-base), background var(--transition-base);
 }
 
-.theme-menu__label {
-  flex: 1;
-  font-weight: var(--font-weight-medium);
+.theme-toggle:hover .theme-toggle__icon {
+  transform: rotate(18deg) scale(1.06);
 }
 
-.theme-menu__divider {
-  height: 1px;
-  background-color: var(--color-border);
-  margin: var(--spacing-xs) 0;
-}
-
-// 主题转换动画
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    transition: background-color var(--transition-base), color var(--transition-base);
-  }
-
-  body {
-    transition: background-color var(--transition-base), color var(--transition-base);
-  }
-
-  a,
-  button,
-  input,
-  select,
-  textarea {
-    transition: all var(--transition-base);
-  }
-}
-
-// 深色主题特定样式调整
-[data-theme="dark"] {
-  // 增强深色主题下的对比度
-  code {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  pre {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  blockquote {
-    border-left-color: var(--color-primary-light);
-  }
-
-  table {
-    th {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-  }
-
-  // 链接在深色主题中的颜色调整
-  a {
-    color: var(--color-primary-light);
-
-    &:visited {
-      color: var(--color-primary);
-    }
-  }
+.theme-toggle__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 }

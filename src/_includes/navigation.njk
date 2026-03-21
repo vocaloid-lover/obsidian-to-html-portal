@@ -1,4 +1,12 @@
-<nav>
-    <a href="/">首页</a>
-    <a href="/notes/">所有笔记</a>
+{% set nav_items = [
+  { label: "首页", href: "/" },
+  { label: "所有笔记", href: "/notes/" },
+  { label: "实验工具", href: "/tools/integral-lab/" }
+] %}
+
+<nav class="site-nav" aria-label="主导航">
+    {% for item in nav_items %}
+    {% set is_active = page.url == item.href %}
+    <a class="site-nav__link{% if is_active %} is-active{% endif %}" href="{{ item.href }}"{% if is_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    {% endfor %}
 </nav>

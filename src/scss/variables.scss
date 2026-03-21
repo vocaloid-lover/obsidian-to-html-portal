@@ -1,40 +1,40 @@
-// ============================================
-// CSS 变量定义 - 支持明暗主题
-// ============================================
-
 :root {
-  // === 颜色系统 ===
-  // 品牌色 (现代 Teal)
-  --color-primary: #0d9488;
-  --color-primary-dark: #134e4a;
-  --color-primary-light: #14b8a6;
+  --color-primary: #0f766e;
+  --color-primary-rgb: 15, 118, 110;
+  --color-primary-dark: #115e59;
+  --color-primary-light: #2dd4bf;
+  --color-accent: #c2410c;
+  --color-accent-rgb: 194, 65, 12;
 
-  // 语义色 (现代对比)
-  --color-success: #059669;
+  --color-success: #047857;
   --color-warning: #d97706;
   --color-error: #dc2626;
   --color-info: #2563eb;
 
-  // 中性色 (Light Theme - 改进对比)
   --color-text: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-text-disabled: #9ca3af;
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f9fafb;
-  --color-bg-tertiary: #f3f4f6;
-  --color-border: #e5e7eb;
-  --color-border-light: #f0f0f0;
+  --color-text-secondary: #526071;
+  --color-text-muted: #7d8796;
+  --color-bg: #f3ede2;
+  --color-bg-secondary: #fffaf2;
+  --color-bg-tertiary: #ece1cf;
+  --color-surface: rgba(255, 250, 242, 0.84);
+  --color-surface-strong: #fffdf8;
+  --color-border: rgba(116, 98, 72, 0.18);
+  --color-border-strong: rgba(116, 98, 72, 0.35);
+  --color-mark: rgba(255, 209, 102, 0.42);
 
-  // === 排版 ===
-  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  
-  --font-size-xs: 0.75rem;    // 12px
-  --font-size-sm: 0.875rem;   // 14px
-  --font-size-base: 1rem;     // 16px
-  --font-size-lg: 1.125rem;   // 18px
-  --font-size-xl: 1.5rem;     // 24px
-  --font-size-2xl: 2rem;      // 32px
+  --font-family-base: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-family-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  --font-family-mono: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
+  --font-size-3xl: clamp(2.8rem, 6vw, 4.75rem);
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -42,80 +42,78 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.6;
-  --line-height-relaxed: 1.8;
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.7;
+  --line-height-relaxed: 1.9;
 
-  // === 间距 ===
-  --spacing-xs: 0.25rem;   // 4px
-  --spacing-sm: 0.5rem;    // 8px
-  --spacing-md: 1rem;      // 16px
-  --spacing-lg: 1.5rem;    // 24px
-  --spacing-xl: 2rem;      // 32px
-  --spacing-2xl: 3rem;     // 48px
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4.5rem;
+  --spacing-4xl: 6rem;
 
-  // === 圆角 ===
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
+  --radius-xs: 0.3rem;
+  --radius-sm: 0.55rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+  --radius-full: 999px;
 
-  // === 阴影 ===
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 14px 32px rgba(24, 36, 54, 0.08);
+  --shadow-md: 0 20px 46px rgba(24, 36, 54, 0.12);
+  --shadow-lg: 0 28px 64px rgba(24, 36, 54, 0.16);
 
-  // === 过渡 ===
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
+  --transition-fast: 160ms ease;
+  --transition-base: 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-slow: 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  // === 布局 ===
-  --max-width-container: 800px;
-  --max-width-wide: 1200px;
+  --max-width-container: 1180px;
+  --max-width-wide: 1320px;
+  --max-width-reading: 840px;
 
-  // === Z-Index ===
   --z-dropdown: 100;
   --z-modal: 1000;
   --z-tooltip: 1100;
 }
 
-// === 深色主题 ===
 [data-theme="dark"] {
-  // 中性色 (Dark Theme - 改进对比)
-  --color-text: #f3f4f6;
-  --color-text-secondary: #d1d5db;
-  --color-text-disabled: #9ca3af;
-  --color-bg: #111827;
-  --color-bg-secondary: #1f2937;
-  --color-bg-tertiary: #374151;
-  --color-border: #4b5563;
-  --color-border-light: #2d3748;
+  --color-primary: #2dd4bf;
+  --color-primary-rgb: 45, 212, 191;
+  --color-primary-dark: #0f766e;
+  --color-primary-light: #7ae6d8;
+  --color-accent: #fb923c;
+  --color-accent-rgb: 251, 146, 60;
 
-  // 品牌色调整 (深色背景下更明显)
-  --color-primary: #14b8a6;
-  --color-primary-light: #2dd4bf;
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #f87171;
   --color-info: #60a5fa;
+
+  --color-text: #ecf1ff;
+  --color-text-secondary: #bac4dc;
+  --color-text-muted: #94a3b8;
+  --color-bg: #09101c;
+  --color-bg-secondary: #101b2b;
+  --color-bg-tertiary: #162338;
+  --color-surface: rgba(16, 27, 43, 0.82);
+  --color-surface-strong: #132033;
+  --color-border: rgba(148, 163, 184, 0.18);
+  --color-border-strong: rgba(148, 163, 184, 0.34);
+  --color-mark: rgba(251, 146, 60, 0.34);
+
+  --shadow-sm: 0 18px 40px rgba(3, 10, 22, 0.3);
+  --shadow-md: 0 26px 54px rgba(3, 10, 22, 0.38);
+  --shadow-lg: 0 34px 70px rgba(3, 10, 22, 0.46);
 }
 
-// === 可访问性 - 减少动画 ===
 @media (prefers-reduced-motion: reduce) {
   :root {
     --transition-fast: 0ms;
     --transition-base: 0ms;
     --transition-slow: 0ms;
   }
-}
-
-// === 响应式布局 ===
-// 这些变量在媒体查询中被使用
-:root {
-  --viewport-mobile: 480px;
-  --viewport-tablet: 768px;
-  --viewport-desktop: 1024px;
 }

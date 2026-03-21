@@ -106,6 +106,20 @@
   overflow-x: auto;
 }
 
+.lab-expression mjx-container[display="true"],
+.lab-history-math mjx-container[display="true"] {
+  margin: 0 !important;
+  padding: var(--spacing-xs) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.lab-expression mjx-container,
+.lab-history-math mjx-container {
+  max-width: 100%;
+}
+
 .lab-empty {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);

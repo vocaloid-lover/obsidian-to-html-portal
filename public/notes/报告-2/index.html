@@ -1,104 +1,134 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
+    
+    
+    
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>报告 2</title>
+    <meta name="description" content="一个整理、推演、记录与实验的长期空间。">
+    <title>报告 2 · 我的知识库</title>
     <link rel="stylesheet" href="/css/styles.css">
-        <!-- MathJax for TeX rendering -->
-        <script>
-            window.MathJax = {
-                tex: {
-                    inlineMath: [['$','$'], ['\\(','\\)']],
-                    displayMath: [['$$','$$'], ['\\[','\\]']],
-                    processEscapes: true
-                },
-                options: {
-                    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem("theme-preference");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if ((savedTheme || (prefersDark ? "dark" : "light")) === "dark") {
+                    document.documentElement.setAttribute("data-theme", "dark");
                 }
-            };
-        </script>
-        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <style>
-            .site-brand { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; }
-            .logo { height: 36px; display: inline-block; }
-            .logo--dark { display: none; }
-            [data-theme="dark"] .logo--light { display: none; }
-            [data-theme="dark"] .logo--dark { display: inline-block; }
-            .breadcrumb { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem; }
-            .breadcrumb a { color: var(--color-primary); text-decoration: none; }
-            .site-footer { padding: 2rem 0; text-align: center; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 3rem; }
-            .social-btn { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; color:var(--color-text-secondary); background:transparent; transition:background var(--transition-fast), color var(--transition-fast); }
-            .social-btn svg { width:20px; height:20px; color:inherit; }
-            .social-btn:hover, .social-btn:focus { background:var(--color-bg-secondary); color:var(--color-primary); outline: none; }
-        </style>
-    </head>
-    <body>
+            } catch (error) {
+                console.warn("Unable to restore theme preference.", error);
+            }
+        })();
+    </script>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script defer data-mathjax-loader="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+</head>
+<body id="top" class="page page--note">
+    <div class="site-shell">
         <header class="site-header">
-            <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-                <a class="site-brand" href="/">
-                    <img src="/image/logolight.jpg" alt="logo" class="logo logo--light">
-                    <img src="/image/logonight.jpg" alt="logo" class="logo logo--dark">
-                    <span class="site-title">我的知识库</span>
-                </a>
-                                <nav>
-    <a href="/">首页</a>
-    <a href="/notes/">所有笔记</a>
+            <div class="container">
+                <div class="site-header__inner">
+                    <a class="site-brand" href="/" aria-label="返回首页">
+                        <span class="site-brand__media" aria-hidden="true">
+                            <img src="/image/logolight.jpg" alt="" class="site-brand__logo site-brand__logo--light">
+                            <img src="/image/logonight.jpg" alt="" class="site-brand__logo site-brand__logo--dark">
+                        </span>
+                        <span class="site-brand__text">
+                            <span class="site-brand__title">我的知识库</span>
+                            <span class="site-brand__subtitle">Mathematics · Physics · Computer Science</span>
+                        </span>
+                    </a>
+
+                    <div class="site-header__cluster">
+                        
+
+<nav class="site-nav" aria-label="主导航">
+    
+    
+    <a class="site-nav__link" href="/">首页</a>
+    
+    
+    <a class="site-nav__link" href="/notes/">所有笔记</a>
+    
+    
+    <a class="site-nav__link" href="/tools/integral-lab/">实验工具</a>
+    
 </nav>
-                                <div class="social-links" style="display:flex;gap:0.5rem;align-items:center;">
-                                                    <a class="social-btn" href="https://github.com/vocaloid-lover/obsidian-to-html-portal" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18.92-.26 1.91-.39 2.9-.39s1.98.13 2.9.39c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.8 1.07.8 2.16 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
-                                                    </a>
-                                                    <a class="social-btn" href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank" rel="noopener" aria-label="Bilibili">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.5 3h-11C4.12 3 3 4.12 3 5.5v13C3 20.88 4.12 22 5.5 22h11c1.38 0 2.5-1.12 2.5-2.5v-13C20 4.12 18.88 3 17.5 3zM8 16H6V8h2v8zm7 0h-2V8h2v8z"/></svg>
-                                                    </a>
-                                                    <a class="social-btn" href="https://x.com/Jiarui_f" title="X / Twitter" target="_blank" rel="noopener" aria-label="X">
-                                                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.16 12.16 0 0 1 3.15 4.6a4.28 4.28 0 0 0 1.32 5.71 4.25 4.25 0 0 1-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.37.1-.76.15-1.16.15-.28 0-.55-.03-.82-.08.55 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54a12.12 12.12 0 0 0 6.57 1.92c7.88 0 12.2-6.53 12.2-12.19v-.56c.84-.6 1.56-1.35 2.02-2.2-.77.34-1.6.58-2.46.69z"/></svg>
-                                                    </a>
-                                                </div>
-            </div>
-            <div class="container breadcrumb" aria-label="Breadcrumb">
-                
-                <a href="/">首页</a>
-                
-                
-                
-                    
-                
-                    
-                        
-                        &nbsp;/&nbsp;<a href="/notes/">notes</a>
-                        
-                    
-                
-                    
-                        
-                        &nbsp;/&nbsp;<a href="/notes/报告-2/">报告-2</a>
-                        
-                    
-                
-                    
-                
+
+
+                        <div class="site-actions">
+                            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false">
+                                <span class="theme-toggle__icon" aria-hidden="true">日</span>
+                                <span class="theme-toggle__label">浅色</span>
+                            </button>
+
+                            <div class="social-links" aria-label="社交链接">
+                                <a class="social-link" href="https://github.com/vocaloid-lover/obsidian-to-html-portal" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18.92-.26 1.91-.39 2.9-.39s1.98.13 2.9.39c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.8 1.07.8 2.16 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
+                                </a>
+                                <a class="social-link" href="https://space.bilibili.com/2061247367?spm_id_from=333.788.0.0" title="Bilibili" target="_blank" rel="noopener" aria-label="Bilibili">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.5 3h-11C4.12 3 3 4.12 3 5.5v13C3 20.88 4.12 22 5.5 22h11c1.38 0 2.5-1.12 2.5-2.5v-13C20 4.12 18.88 3 17.5 3zM8 16H6V8h2v8zm7 0h-2V8h2v8z"/></svg>
+                                </a>
+                                <a class="social-link" href="https://x.com/Jiarui_f" title="X / Twitter" target="_blank" rel="noopener" aria-label="X">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.16 12.16 0 0 1 3.15 4.6a4.28 4.28 0 0 0 1.32 5.71 4.25 4.25 0 0 1-1.94-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.37.1-.76.15-1.16.15-.28 0-.55-.03-.82-.08.55 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54a12.12 12.12 0 0 0 6.57 1.92c7.88 0 12.2-6.53 12.2-12.19v-.56c.84-.6 1.56-1.35 2.02-2.2-.77.34-1.6.58-2.46.69z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
-    
-    <main class="container">
-        <article class="note">
-    <header class="note-header">
-        <h1>报告 2</h1>
-        
-        <time datetime="2025-09-27">2025-09-27</time>
-        
-        
-        <div class="tags">
-            
-        </div>
-        
-    </header>
-    
-    <div class="note-content">
-        <p>&quot;</p>
+
+        <main class="site-main">
+            <div class="page page--note">
+    <article class="note-page">
+        <header class="note-hero">
+            <div class="container">
+                <div class="note-hero__inner">
+                    <nav class="note-breadcrumb" aria-label="页面导航">
+                        <a href="/">首页</a>
+                        <span>/</span>
+                        <a href="/notes/">笔记</a>
+                    </nav>
+
+                    <p class="eyebrow">Note</p>
+                    <h1>报告 2</h1>
+
+                    <div class="note-hero__meta">
+                        
+                        <time datetime="2025-09-27">2025-09-27</time>
+                        
+                        <span>Obsidian Source</span>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </header>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="note-layout">
+                    <div class="note-content-shell">
+                        <div class="note-content">
+                            <p>&quot;</p>
 <h1>对欧拉常数作为连续与离散数学之间桥梁的理论探索，及其对超越数新分类框架的启示</h1>
 <p><strong>执行摘要：</strong></p>
 <p>本报告深入探讨了一个深刻的假设：欧拉常数（γ）作为连接连续与离散数学领域的根本“余核”。报告探索了两个相互关联的研究方向：其一，在导数算子（D）与差分算子（δ）的同调群之间建立一个与γ相关的映射；其二，提出一个基于模空间中连续到离散映射所产生的“商”来分类超越数的新颖框架。这项跨学科的努力旨在统一分析学、代数、拓扑学、数论、范畴论和非标准分析中的概念，为数学常数和数分类的基本性质提供了全新的视角。</p>
@@ -379,27 +409,45 @@
 </ol>
 <p>这些方向的探索将有望为数学中一些最深刻的问题提供新的见解，并可能揭示连续与离散、代数与超越之间未知的深刻联系。</p>
 
-    </div>
-    
-    <footer class="note-footer">
-        <nav class="note-nav">
-            <a href="/">返回首页</a>
-            <a href="/notes/">所有笔记</a>
-        </nav>
-    </footer>
-</article>
-    </main>
-    
-    <footer class="site-footer">
+                        </div>
+                    </div>
+
+                    <aside class="note-aside" aria-label="辅助信息">
+                        <div class="note-aside__card">
+                            <p class="note-aside__eyebrow">快速跳转</p>
+                            <a href="/">返回首页</a>
+                            <a href="/notes/">查看全部笔记</a>
+                        </div>
+
+                        
+                        <div class="note-aside__card">
+                            <p class="note-aside__eyebrow">发布日期</p>
+                            <p>2025-09-27</p>
+                        </div>
+                        
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </article>
+</div>
+
+        </main>
+
+        <footer class="site-footer">
             <div class="container">
-            <p>© <span id="copyright-year"></span> 我的知识库 · Chen Jiarui · All rights reserved.</p>
-            <p><small>Generated from Obsidian notes · Built with Eleventy</small></p>
-            <p><a href="#top">回到顶部</a></p>
-        </div>
-    </footer>
-    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                <div class="site-footer__inner">
+                    <p class="site-footer__headline">为长期积累服务的静态知识库，保留推理过程，也保留实验入口。</p>
+                    <p class="site-footer__meta">© <span id="copyright-year"></span> 我的知识库 · Chen Jiarui · Built with Eleventy</p>
+                    <a class="site-footer__back" href="#top">回到顶部</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
     
-    <script src="/js/theme.js"></script>
-    <script src="/js/main.js"></script>
+
+    <script src="/js/theme.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>
